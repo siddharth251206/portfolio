@@ -67,83 +67,57 @@
 /* ============================= */
 
 @layer base {
-  :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 10%;
-    --border: 0 0% 80%;
+ :root {
+  --background: 0 0% 100%;            /* #FFFFFF */
+  --foreground: 197 65% 6%;           /* #00171F */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 197 65% 6%;
 
-    --muted: 0 0% 60%;
-    --muted-foreground: 0 0% 40%;
+  --border: 197 30% 80%;
+  --border-strong: 197 30% 65%;
 
-    --primary: 160 84% 45%;
-    --primary-foreground: 0 0% 100%;
+  --muted: 197 15% 65%;
+  --muted-foreground: 197 30% 40%;
 
-    --accent: 185 80% 55%;
-    --accent-foreground: 0 0% 5%;
+  --primary: 195 100% 33%;            /* #007EA7 */
+  --primary-foreground: 0 0% 100%;
 
-    --hover: 0 0% 92%;
-    --border-strong: 0 0% 65%;
+  --accent: 193 100% 46%;             /* #00A8E8 */
+  --accent-foreground: 0 0% 10%;
 
-    --ring: 160 84% 45%;
+  --hover: 197 35% 95%;
 
-    --shadow: 0 0% 0% / 0.08;
-    --shadow-strong: 0 0% 0% / 0.18;
-
-    --radius-sm: 6px;
-    --radius: 12px;
-    --radius-lg: 20px;
-
-    --gradient-start: var(--primary);
-    --gradient-end: var(--accent);
-
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.35s ease;
-    --transition-slow: 0.7s ease;
-    --transition-glow: 0.45s ease-out;
-  }
-
-  .dark {
-    --background: 0 0% 5%;
-    --foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 96%;
-
-    --muted: 0 0% 60%;
-    --muted-foreground: 0 0% 75%;
-
-    --primary: 160 84% 45%;
-    --primary-foreground: 0 0% 100%;
-
-    --accent: 185 80% 55%;
-    --accent-foreground: 0 0% 5%;
-
-    --hover: 0 0% 12%;
-    --border-strong: 0 0% 30%;
-
-    --ring: 160 84% 45%;
-
-    --shadow: 0 0% 0% / 0.35;
-    --shadow-strong: 0 0% 0% / 0.65;
-
-    --radius-sm: 6px;
-    --radius: 12px;
-    --radius-lg: 20px;
-
-    --gradient-start: var(--primary);
-    --gradient-end: var(--accent);
-
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.35s ease;
-    --transition-slow: 0.7s ease;
-    --transition-glow: 0.45s ease-out;
-  }
+  --shadow: 0 0% 0% / 0.05;
+  --shadow-strong: 0 0% 0% / 0.25;
 }
 
+ .dark {
+  --background: 197 65% 6%;           /* #00171F */
+  --foreground: 0 0% 100%;            /* white */
+
+  --card: 197 60% 12%;                /* #003459 */
+  --card-foreground: 0 0% 100%;
+
+  --border: 197 30% 25%;
+  --border-strong: 197 30% 35%;
+
+  --muted: 197 25% 55%;
+  --muted-foreground: 197 30% 75%;
+
+  --primary: 195 100% 33%;            /* #007EA7 */
+  --primary-foreground: 0 0% 100%;
+
+  --accent: 193 100% 46%;             /* #00A8E8 */
+  --accent-foreground: 0 0% 5%;
+
+  --hover: 197 45% 15%;
+
+  --shadow: 0 0% 0% / 0.45;
+  --shadow-strong: 0 0% 0% / 0.75;
+}
+
+}
 
 /* ============================= */
 /*         4. ANIMATIONS         */
@@ -273,6 +247,78 @@
   100% { opacity: .25; }
 }
 
+@keyframes helloSweepRL {
+  0% {
+    transform: translateX(140%) scale(1.05) skewX(6deg);
+    opacity: 1;
+    filter: blur(2px);
+  }
+  /* 40% {
+    transform: translateX(20%) scale(1.03) skewX(0deg);
+    opacity: 0.18;
+    filter: blur(0px);
+  } */
+  100% {
+    transform: translateX(-130%) scale(1) skewX(-6deg);
+    opacity: 1;
+    filter: blur(2px);
+  }
+}
+
+
+.worddrop {
+  opacity: 0;
+  display: inline-block;
+  animation: wordDrop 0.6s ease forwards;
+}
+
+@keyframes wordDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) rotateX(25deg);
+  }
+  60% {
+    transform: translateY(0px) rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+@keyframes heroImageEntrance {
+  0% {
+    transform: translateX(-50%) scale(1.45);
+    transform-origin: bottom center;
+  }
+  100% {
+    transform: translateX(calc(-50% + 220px)) scale(1);
+    transform-origin: bottom center;
+  }
+}
+@keyframes softGlowPulse {
+  0% {
+    filter:
+      drop-shadow(0 0 18px rgba(0,168,232,0.20))
+      drop-shadow(0 0 32px rgba(0,126,167,0.16))
+      drop-shadow(0 0 50px rgba(0,52,89,0.12));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 26px rgba(0,168,232,0.28))
+      drop-shadow(0 0 45px rgba(0,126,167,0.22))
+      drop-shadow(0 0 70px rgba(0,52,89,0.18));
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 18px rgba(0,168,232,0.20))
+      drop-shadow(0 0 32px rgba(0,126,167,0.16))
+      drop-shadow(0 0 50px rgba(0,52,89,0.12));
+  }
+}
+
 
 
 /* ============================= */
@@ -299,24 +345,15 @@
     max-width: 1400px;
   }
 }
-@utility section-bg {
+
+@utility sectionbg {
   position: relative;
   overflow: hidden;
-
-  /* animated gradient */
-  background: linear-gradient(
-    120deg,
-    hsl(var(--gradient-start)) 0%,
-    hsl(var(--gradient-end)) 100%
-  );
-  background-size: 300% 300%;
-  animation: bgGradientShift 12s ease-in-out infinite;
-
-  color: hsl(var(--foreground));
+  background: hsl(var(--background)); /* plain light background */
 }
 
-/* soft noise overlay */
-@utility section-noise {
+
+@utility sectionnoise {
   pointer-events: none;
   position: absolute;
   inset: 0;
@@ -325,8 +362,7 @@
   animation: softNoise 4s ease-in-out infinite;
 }
 
-/* optional radial glow spotlight */
-@utility section-glow {
+@utility sectionglow {
   pointer-events: none;
   position: absolute;
   inset: 0;
@@ -345,45 +381,100 @@
   box-shadow: var(--glass-shadow);
   border-radius: var(--radius);
   transition: var(--transition-normal);
-}
 
-@utility glass-hover {
-  transition: var(--transition-glow);
-}
-
-@utility glass-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px -12px hsla(var(--shadow-strong));
-  border-color: hsl(var(--accent));
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px -12px hsla(var(--shadow-strong));
+    border-color: hsl(var(--accent));
+  }
 }
 
 @utility btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.4rem;
-  border-radius: var(--radius);
-  font-weight: 500;
 
-  background-color: var(--btn-bg);
-  border: 1px solid var(--btn-border);
-  backdrop-filter: blur(10px);
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius);
+
+  font-weight: 600;
+  font-size: 1rem;
+
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,126,167,0.35),
+    rgba(0,168,232,0.25)
+  );
+  border: 1px solid rgba(0,126,167,0.35);
+
+  backdrop-filter: blur(12px);
 
   color: hsl(var(--foreground));
 
-  box-shadow: var(--btn-shadow);
-  transition: var(--transition-normal);
+  box-shadow: 0 6px 20px -4px rgba(0, 168, 232, 0.3);
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,168,232,0.45),
+    rgba(0,126,167,0.35)
+  );
+  border-color: rgba(0,168,232,0.55);
+  box-shadow: 0 10px 30px -3px rgba(0,168,232,0.4);
+  }
+
+  &:active {
+     transform: translateY(-1px);
+  box-shadow: 0 5px 15px -3px rgba(0,168,232,0.35);
+  }
 }
 
-@utility btn:hover {
-  background-color: var(--btn-hover-bg);
-  box-shadow: var(--btn-hover-shadow);
-  border-color: hsl(var(--accent));
-  transform: translateY(-2px);
+@utility hellosweep {
+  font-size: 8vw;                     /* perfect size */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  opacity: 0.18;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+
+  /* premium blue gradient text */
+  background: linear-gradient(to right, #003459, #007EA7, #00A8E8);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /* subtle outline for clarity */
+  -webkit-text-stroke: 1px rgba(0, 23, 31, 0.35);
+
+  transform: translateZ(0);
+  will-change: transform, filter;
+
+  animation: helloSweepRL 5s cubic-bezier(0.25, 1, 0.35, 1.1) forwards;
 }
 
-@utility btn:active {
-  transform: translateY(0);
-  box-shadow: var(--btn-shadow);
-  transition: var(--transition-fast);
+@utility worddrop {
+  opacity: 0;
+  animation: wordDrop 0.5s ease forwards;
 }
+
+@utility heroimageenter {
+  animation: heroImageEntrance 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@utility animate-floatParticle {
+  animation: floatParticle 4s ease-in-out infinite;
+}
+@utility shape-glow {
+  filter:
+    drop-shadow(0 0 20px rgba(0,168,232,0.22))
+    drop-shadow(0 0 35px rgba(0,126,167,0.18))
+    drop-shadow(0 0 55px rgba(0,52,89,0.14));
+  transition: filter 1.2s ease;
+}
+
+@utility shape-glow-animate {
+  animation: shapeGlowPulse 5s ease-in-out infinite;
+}
+
