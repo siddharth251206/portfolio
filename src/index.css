@@ -1,4 +1,14 @@
+/* ============================= */
+/*        1. TAILWIND IMPORT     */
+/* ============================= */
+
 @import "tailwindcss";
+
+
+/* ============================= */
+/*         2. THEME TOKENS       */
+/*  (computed variables only)    */
+/* ============================= */
 
 @theme {
   --color-border: hsl(var(--border));
@@ -7,7 +17,373 @@
 
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-  
-  --color-card: hsl(var(--card));
 
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-hover: hsl(var(--hover));
+  --color-border-strong: hsl(var(--border-strong));
+
+  --color-ring: hsl(var(--ring));
+
+  --color-shadow: hsla(var(--shadow));
+  --color-shadow-strong: hsla(var(--shadow-strong));
+
+  --radius-sm: var(--radius-sm);
+  --radius: var(--radius);
+  --radius-lg: var(--radius-lg);
+
+  --gradient-start: hsl(var(--gradient-start));
+  --gradient-end: hsl(var(--gradient-end));
+
+  --transition-fast: var(--transition-fast);
+  --transition-normal: var(--transition-normal);
+  --transition-slow: var(--transition-slow);
+  --transition-glow: var(--transition-glow);
+
+    --glass-bg: hsla(var(--background) / 0.35);
+  --glass-border: hsla(var(--border) / 0.35);
+  --glass-shadow: 0 8px 25px -10px hsla(var(--shadow-strong));
+  --glass-blur: 12px;
+
+    --btn-bg: hsla(var(--background) / 0.25);
+  --btn-border: hsla(var(--border) / 0.35);
+  --btn-hover-bg: hsla(var(--accent) / 0.15);
+  --btn-shadow: 0 6px 20px -5px hsla(var(--primary) / 0.4);
+  --btn-hover-shadow: 0 10px 28px -8px hsla(var(--primary) / 0.55);
+
+}
+
+
+/* ============================= */
+/*       3. BASE THEMES          */
+/*     (light + dark tokens)     */
+/* ============================= */
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+    --border: 0 0% 80%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --muted: 0 0% 60%;
+    --muted-foreground: 0 0% 40%;
+
+    --primary: 160 84% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 185 80% 55%;
+    --accent-foreground: 0 0% 5%;
+
+    --hover: 0 0% 92%;
+    --border-strong: 0 0% 65%;
+
+    --ring: 160 84% 45%;
+
+    --shadow: 0 0% 0% / 0.08;
+    --shadow-strong: 0 0% 0% / 0.18;
+
+    --radius-sm: 6px;
+    --radius: 12px;
+    --radius-lg: 20px;
+
+    --gradient-start: var(--primary);
+    --gradient-end: var(--accent);
+
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.35s ease;
+    --transition-slow: 0.7s ease;
+    --transition-glow: 0.45s ease-out;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+
+    --muted: 0 0% 60%;
+    --muted-foreground: 0 0% 75%;
+
+    --primary: 160 84% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 185 80% 55%;
+    --accent-foreground: 0 0% 5%;
+
+    --hover: 0 0% 12%;
+    --border-strong: 0 0% 30%;
+
+    --ring: 160 84% 45%;
+
+    --shadow: 0 0% 0% / 0.35;
+    --shadow-strong: 0 0% 0% / 0.65;
+
+    --radius-sm: 6px;
+    --radius: 12px;
+    --radius-lg: 20px;
+
+    --gradient-start: var(--primary);
+    --gradient-end: var(--accent);
+
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.35s ease;
+    --transition-slow: 0.7s ease;
+    --transition-glow: 0.45s ease-out;
+  }
+}
+
+
+/* ============================= */
+/*         4. ANIMATIONS         */
+/* ============================= */
+
+/* ========= 1. LETTER STAGGER REVEAL ========= */
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========= 2. PARALLAX FLOAT ========= */
+@keyframes parallaxFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(5px, -10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ========= 3. GLOW BLOB MORPH ========= */
+@keyframes blobMorph {
+  0% {
+    transform: scale(1) translate(0, 0);
+    border-radius: 40%;
+  }
+  33% {
+    transform: scale(1.15) translate(10px, -20px);
+    border-radius: 55%;
+  }
+  66% {
+    transform: scale(0.9) translate(-10px, 10px);
+    border-radius: 35%;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    border-radius: 40%;
+  }
+}
+
+/* ========= 4. FLOATING PARTICLES ========= */
+@keyframes floatParticle {
+  0% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+}
+
+/* ========= 5. SCROLL REVEAL (lift + fade) ========= */
+@keyframes sectionReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========= 6. HOVER TILT SHADOW ========= */
+@keyframes tiltHoverGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 255, 150, 0);
+  }
+  100% {
+    box-shadow: 0 15px 40px -10px rgba(0, 255, 150, 0.25);
+  }
+}
+
+/* ========= 7. SUBTLE FLOAT FOR ELEMENTS ========= */
+@keyframes subtleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ========= 8. OPACITY FADE-IN ========= */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bgGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes softNoise {
+  0% { opacity: .25; }
+  50% { opacity: .35; }
+  100% { opacity: .25; }
+}
+
+
+
+/* ============================= */
+/*         5. UTILITIES          */
+/* ============================= */
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+@utility section-bg {
+  position: relative;
+  overflow: hidden;
+
+  /* animated gradient */
+  background: linear-gradient(
+    120deg,
+    hsl(var(--gradient-start)) 0%,
+    hsl(var(--gradient-end)) 100%
+  );
+  background-size: 300% 300%;
+  animation: bgGradientShift 12s ease-in-out infinite;
+
+  color: hsl(var(--foreground));
+}
+
+/* soft noise overlay */
+@utility section-noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.png");
+  opacity: 0.2;
+  animation: softNoise 4s ease-in-out infinite;
+}
+
+/* optional radial glow spotlight */
+@utility section-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 40% 30%,
+    hsl(var(--primary) / .25),
+    transparent 60%
+  );
+  filter: blur(70px);
+}
+
+@utility glass {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius);
+  transition: var(--transition-normal);
+}
+
+@utility glass-hover {
+  transition: var(--transition-glow);
+}
+
+@utility glass-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -12px hsla(var(--shadow-strong));
+  border-color: hsl(var(--accent));
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  backdrop-filter: blur(10px);
+
+  color: hsl(var(--foreground));
+
+  box-shadow: var(--btn-shadow);
+  transition: var(--transition-normal);
+}
+
+@utility btn:hover {
+  background-color: var(--btn-hover-bg);
+  box-shadow: var(--btn-hover-shadow);
+  border-color: hsl(var(--accent));
+  transform: translateY(-2px);
+}
+
+@utility btn:active {
+  transform: translateY(0);
+  box-shadow: var(--btn-shadow);
+  transition: var(--transition-fast);
 }
