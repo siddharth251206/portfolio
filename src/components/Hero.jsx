@@ -19,16 +19,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-hidden">
+    <section className="relative h-screen w-full
+    text-[hsl(var(--foreground))]
+    overflow-hidden">
 
-   {/* CLEAN VIGNETTE */}
-<div className="absolute inset-0 pointer-events-none z-0">
-  <div className="
-    absolute inset-0 
-    shadow-[inset_0_0_80px_rgba(0,0,0,0.12)]
-    dark:shadow-[inset_0_0_120px_rgba(0,0,0,0.45)]
-  "></div>
-</div>
 
 {/* BACKGROUND SHAPES */}
 <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -113,18 +107,15 @@ export default function Hero() {
 <div className="absolute left-[18vw] top-[20vh] z-10 max-w-[650px]">
   {showText && (
     <div className="space-y-4 text-left">
-      <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] text-[hsl(var(--foreground))]">
+       <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] text-[hsl(var(--foreground))]">
         <span className="worddrop" style={{ animationDelay: "0.0s" }}>
-          This is your intro line one,
+          Hi, I’m <span className="text-[hsl(var(--accent))]">Siddharth</span> Sheth — 
         </span>
         <br />
         <span className="worddrop" style={{ animationDelay: "0.15s" }}>
-          line two goes here,
+          a CSE undergrad from SVNIT.
         </span>
         <br />
-        <span className="worddrop" style={{ animationDelay: "0.3s" }}>
-          line three or whatever you choose.
-        </span>
       </h1>
 
       <p
@@ -189,5 +180,6 @@ export default function Hero() {
       )}
 
     </section>
+    
   );
 }
