@@ -52,9 +52,9 @@ export default function Navbar() {
 
 </div>
 
-        <a href="#projects" className="hover:text-[hsl(var(--accent))] transition">Projects</a>
-        <a href="#about" className="hover:text-[hsl(var(--accent))] transition">About</a>
-        <a href="#contact" className="hover:text-[hsl(var(--accent))] transition">Contact</a>
+        <a href="#projects" className="hover:text-[hsl(var(--accent))] transition hover-target">Projects</a>
+        <a href="#about" className="hover:text-[hsl(var(--accent))] transition hover-target">About</a>
+        <a href="#contact" className="hover:text-[hsl(var(--accent))] transition hover-target">Contact</a>
       </div>
     </nav>
   );

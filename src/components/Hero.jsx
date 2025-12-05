@@ -1,9 +1,62 @@
 import { useEffect, useState } from "react";
-
+import { motion} from "framer-motion";
+import  FloatingParticle  from "../components/FloatingParticle"
 export default function Hero() {
   const [showHello, setShowHello] = useState(true);
   const [shiftImage, setShiftImage] = useState(false);
   const [showText, setShowText] = useState(false);
+ const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,   // timing between each word
+      delayChildren: 0.1
+    }
+  }
+};
+
+const drop = {
+  hidden: {
+    opacity: 0,
+    y: -30,        // start above
+  },
+  show: {
+    opacity: 1,
+    y: 0,          // end at normal position
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 20,
+    }
+  }
+};
+const imageVariants = {
+  initial: {
+    opacity: 0,
+    y: 40,
+    x: 0,
+    scale: 1
+  },
+  enter: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  },
+  shifted: {
+    x: 240,
+    scale: 0.98,
+    transition: {
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};
+
 
   // Animation sequence
   useEffect(() => {
@@ -17,12 +70,13 @@ export default function Hero() {
       clearTimeout(t3);
     };
   }, []);
+console.log("shiftImage:", shiftImage);
 
   return (
     <section className="relative h-screen w-full
     text-[hsl(var(--foreground))]
-    overflow-hidden">
-
+    overflow-hidden hero-bg">
+      
 
 {/* BACKGROUND SHAPES */}
 <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -41,132 +95,117 @@ export default function Hero() {
 
 </div>
 {/* FLOATING PARTICLES */}
-<div className="absolute inset-0 z-0 pointer-events-none">
+<FloatingParticle size={30} color="rgba(0,126,167,0.6)" top="22vh" left="18vw" />
+<FloatingParticle size={16} color="rgba(0,168,232,0.6)" top="40vh" left="32vw" />
+<FloatingParticle size={12} color="rgba(0,52,89,0.6)" top="60vh" left="25vw" />
+<FloatingParticle size={20} color="rgba(0,126,167,0.5)" top="28vh" left="60vw" />
+<FloatingParticle size={16} color="rgba(0,168,232,0.55)" top="48vh" left="72vw" />
+<FloatingParticle size={12} color="rgba(0,52,89,0.50)" top="68vh" left="52vw" />
+<FloatingParticle size={45} color="rgba(0,168,232,0.50)" top="35vh" left="85vw" />
 
-  {/* Particle 1 — large */}
-  <div className="
-    absolute w-5 h-5 rounded-full bg-[#007EA7]/60
-    top-[22vh] left-[18vw]
-    animate-floatParticle
-  "></div>
-
-  {/* Particle 2 — medium */}
-  <div className="
-    absolute w-4 h-4 rounded-full bg-[#00A8E8]/60
-    top-[40vh] left-[32vw]
-    animate-floatParticle
-    [animation-delay:0.2s]
-  "></div>
-
-  {/* Particle 3 — small */}
-  <div className="
-    absolute w-3 h-3 rounded-full bg-[#003459]/60
-    top-[60vh] left-[25vw]
-    animate-floatParticle
-    [animation-delay:0.35s]
-  "></div>
-
-  {/* Particle 4 — large */}
-  <div className="
-    absolute w-5 h-5 rounded-full bg-[#007EA7]/50
-    top-[28vh] left-[60vw]
-    animate-floatParticle
-    [animation-delay:0.5s]
-  "></div>
-
-  {/* Particle 5 — medium */}
-  <div className="
-    absolute w-4 h-4 rounded-full bg-[#00A8E8]/55
-    top-[48vh] left-[72vw]
-    animate-floatParticle
-    [animation-delay:0.7s]
-  "></div>
-
-  {/* Particle 6 — small */}
-  <div className="
-    absolute w-3 h-3 rounded-full bg-[#003459]/50
-    top-[68vh] left-[52vw]
-    animate-floatParticle
-    [animation-delay:0.9s]
-  "></div>
-
-  {/* Particle 7 — medium */}
-  <div className="
-    absolute w-4 h-4 rounded-full bg-[#00A8E8]/50
-    top-[35vh] left-[85vw]
-    animate-floatParticle
-    [animation-delay:1.1s]
-  "></div>
-
-</div>
 
 
       {/* BACKGROUND SHAPES, NOISE, GLOW CAN BE ADDED HERE */}
 
 {/* LEFT TEXT AREA */}
-<div className="absolute left-[18vw] top-[20vh] z-10 max-w-[650px]">
+<div className="absolute left-[18vw] top-[30vh] z-10 max-w-[650px]">
   {showText && (
-    <div className="space-y-4 text-left">
-       <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] text-[hsl(var(--foreground))]">
-        <span className="worddrop" style={{ animationDelay: "0.0s" }}>
-          Hi, I’m <span className="text-[hsl(var(--accent))]">Siddharth</span> Sheth — 
-        </span>
-        <br />
-        <span className="worddrop" style={{ animationDelay: "0.15s" }}>
-          a CSE undergrad from SVNIT.
-        </span>
-        <br />
-      </h1>
+  <motion.div
+    className="space-y-4 text-left"
+    variants={container}
+    initial="hidden"
+    animate="show"
+  >
+    <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
 
-      <p
-  className="text-[hsl(var(--muted-foreground))] text-lg leading-relaxed max-w-md worddrop"
-  style={{ animationDelay: "0.45s" }}
->
-        Your small description text will go here. This is placeholder text.
-      </p>
+      {/* LINE 1 */}
+      {/* LINE 1 */}
+<motion.span className="inline-block">
+  {"Hi, I'm Siddharth Sheth".split(" ").map((word, i) => (
+    <motion.span
+      key={i}
+      variants={drop}
+      className={`inline-block mr-2 ${
+        word === "Siddharth" ? "text-[hsl(var(--accent))]" : ""
+      }`}
+    >
+      {word}
+    </motion.span>
+  ))}
+</motion.span>
+      <br />
 
-      <div className="flex gap-4 pt-4">
-        <button className="btn worddrop" style={{ animationDelay: "0.6s" }}>
-          View Projects
-        </button>
-        <button className="btn worddrop" style={{ animationDelay: "0.75s" }}>
-          Contact Me
-        </button>
-      </div>
-    </div>
-  )}
+      {/* LINE 2 */}
+      <motion.span className="inline-block mt-2">
+        {"a CSE undergrad from SVNIT.".split(" ").map((word, i) => (
+          <motion.span
+            key={i}
+            variants={drop}
+            className="inline-block mr-2"
+          >
+            {word}
+          </motion.span>
+        ))}
+      </motion.span>
+
+    </h1>
+
+    {/* PARAGRAPH */}
+    <motion.p
+      className="text-[hsl(var(--muted-foreground))] text-lg leading-relaxed max-w-md"
+      variants={drop}
+    >
+      Your small description text will go here. This is placeholder text.
+    </motion.p>
+
+    {/* BUTTONS */}
+    <motion.div className="flex gap-4 pt-4">
+      <motion.button className="btn hover-target" variants={drop}>
+        View Projects
+      </motion.button>
+      <motion.button className="btn hover-target" variants={drop}>
+        Contact Me
+      </motion.button>
+    </motion.div>
+
+  </motion.div>
+)}
+
+
 </div>
 
 {/* HERO IMAGE WRAPPER */}
-<div className={`
-  absolute bottom-0 left-1/2 -translate-x-1/2 z-20 pointer-events-none select-none
-  transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)]
-  ${shiftImage ? "translate-x-[240px]" : ""}
-`}>
+<div
+  className="
+    absolute bottom-0 left-1/2 
+    -translate-x-1/2 
+    z-20 pointer-events-none select-none
+  "
+>
+  {/* Glow */}
+  <div className="absolute inset-0 rounded-[999px] glow-border"></div>
 
-  {/* Glow Border */}
-  <div className={`
-    absolute inset-0
-    rounded-[999px]
-    pointer-events-none
-    transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)]
-    ${shiftImage ? "scale-[0.98]" : "scale-100"}
-    glow-border
-  `}></div>
+  <motion.img
+    src="/sid.png"
+    alt="Siddharth"
+    className="relative z-10 shape-glow shape-glow-animate h-[90vh]"
+    style={{
+  transformOrigin: "bottom center"
+}}
 
-  {/* Actual Image */}
-  <img
-  src="/sid.png"
-  alt="Siddharth"
-  className={`
-    relative z-10
-    shape-glow shape-glow-animate
-    transition-all duration-[1300ms] ease-[cubic-bezier(0.22,1,0.36,1)]
-    ${shiftImage ? "h-[82vh] scale-[0.98]" : "h-[90vh] scale-100"}
-  `}
-  style={{ transformOrigin: "bottom center" }}
-/>
+    initial={{ opacity: 1, y: 40, scale: 1, x: 0 }}
+    animate={
+      shiftImage
+        ? { opacity: 1, y: 0, scale: 0.98, x: 360 }
+        : { opacity: 1, y: 0, scale: 1, x: 0 }
+    }
+    transition={{
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1]
+    }}
+  />
 </div>
+
 
 
 

@@ -4,8 +4,9 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
+import { useEffect } from "react";
 export default function Home() {
+
 return (<>
 {/* GLOBAL CLEAN VIGNETTE */}
 <div className="fixed inset-0 pointer-events-none z-[1]">
@@ -33,5 +34,7 @@ return (<>
 </div>
       <ProjectsSection />
       <Footer />
+      <div id="cursor-contrast"></div>
+      
 </>);
 }
