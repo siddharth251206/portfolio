@@ -410,3 +410,26 @@
   background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
   filter: blur(10px);
 }
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-floating-delayed {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+@keyframes float-slow {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-floating-slower {
+  animation: float-slow 6s ease-in-out infinite;
+}
