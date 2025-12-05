@@ -20,6 +20,38 @@ export default function Navbar() {
 
       {/* Links */}
       <div className="flex gap-6 text-[hsl(var(--foreground))] font-medium">
+        {/* MODE SWITCHER */}
+<div 
+  onClick={() => {
+  const root = document.documentElement;
+  root.classList.toggle("dark");
+}}
+
+
+  className="
+    relative w-14 h-7 rounded-full cursor-pointer select-none
+    bg-white/40 dark:bg-white/10
+    border border-white/30 dark:border-white/20
+    shadow-inner
+    backdrop-blur-xl
+    transition-all duration-300
+    flex items-center px-1
+  "
+>
+ <div
+  className="
+    absolute top-1
+    h-5 w-5 rounded-full
+    bg-white dark:bg-[hsl(var(--accent))]
+    shadow-lg dark:shadow-[0_0_10px_hsl(var(--accent))]
+    transition-all duration-300
+  "
+  style={{ left: "var(--toggle-knob-left)" }}
+></div>
+
+
+</div>
+
         <a href="#projects" className="hover:text-[hsl(var(--accent))] transition">Projects</a>
         <a href="#about" className="hover:text-[hsl(var(--accent))] transition">About</a>
         <a href="#contact" className="hover:text-[hsl(var(--accent))] transition">Contact</a>

@@ -28,6 +28,9 @@ return (<>
   <div className="torn-divider"></div>
 </div>
       <Skills />
+      <div className="relative h-[0px]">
+  <div className="torn-divider"></div>
+</div>
       <ProjectsSection />
       <Footer />
 </>);

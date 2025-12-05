@@ -98,8 +98,9 @@
 
   --shadow: 0 0% 0% / 0.05;
   --shadow-strong: 0 0% 0% / 0.25;
-
+--about-bg: url('/about-bg-light.jpg'); 
    --hero-bg: var(--hero-bg-light);
+    --toggle-knob-left: 4px;
 }
 
  .dark {
@@ -122,10 +123,11 @@
   --accent-foreground: 0 0% 5%;
 
   --hover: 197 45% 15%;
-
+--about-bg: url('/about-bg.jpg'); 
   --shadow: 0 0% 0% / 0.45;
   --shadow-strong: 0 0% 0% / 0.75;
   --hero-bg: var(--hero-bg-dark);
+   --toggle-knob-left: 32px;
 }
 
   html, body {
@@ -432,4 +434,7 @@
 
 .animate-floating-slower {
   animation: float-slow 6s ease-in-out infinite;
+}
+.dark .mode-knob {
+  box-shadow: 0 0 10px var(--accent);
 }

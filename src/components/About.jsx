@@ -5,16 +5,11 @@ export default function About() {
 >
 
   {/* BACKGROUND IMAGE */}
-  <div className="absolute inset-0 z-0">
-    <img 
-      src="/about-bg.jpg"
-      className="w-full h-full object-cover object-center opacity-70"
-      alt=""
-    />
-    {/* Dark overlay for readability */}
-    <div className="absolute inset-0 bg-gradient-to-b 
-      from-black/50 via-black/30 to-black/70"></div>
-  </div>
+ <div 
+  className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-80"
+  style={{ backgroundImage: "var(--about-bg)" }}
+></div>
+
 
   {/* FLOATING DECOR SHAPES */}
   <div className="absolute inset-0 z-0 pointer-events-none">
