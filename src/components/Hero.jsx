@@ -137,10 +137,10 @@ console.log("shiftImage:", shiftImage);
 
     {/* BUTTONS */}
     <motion.div className="flex gap-4 pt-4">
-      <motion.button className="btn hover-target" variants={drop}>
+      <motion.button className="btn hover-target" variants={drop} data-cursor="pointer">
         View Projects
       </motion.button>
-      <motion.button className="btn hover-target" variants={drop}>
+      <motion.button className="btn hover-target" variants={drop} data-cursor="pointer">
         Contact Me
       </motion.button>
     </motion.div>

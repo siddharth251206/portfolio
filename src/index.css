@@ -4,6 +4,12 @@
 
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'EasterEgg';
+  src: url('/src/assets/SpecialElite.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* ============================= */
 /*         2. THEME TOKENS       */
@@ -11,9 +17,13 @@
 /* ============================= */
 html {
   cursor: none !important;
+  scroll-behavior: smooth;
 }
 
+
+
 @theme {
+  --font-easter: "EasterEgg", sans-serif;
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -415,12 +425,12 @@ body{
   background-size: 100% 100%; /* STRETCH CLEANLY */
   background-repeat: no-repeat;
   background-position: center;
+background-blend-mode: multiply;
 
   transform: translateY(-55px); /* half the height */
   pointer-events: none;
   z-index: 20;
 }
-
 
 .torn-divider::after {
   content: "";

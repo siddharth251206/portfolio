@@ -8,6 +8,7 @@ export default function About() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
+      id="about"
       className="relative w-full py-32 text-[hsl(var(--foreground))]"
 
     >
