@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion} from "framer-motion";
 import  FloatingParticle  from "../components/FloatingParticle"
+import SectionParticles from "./SectionParticles";
 export default function Hero() {
   const [showHello, setShowHello] = useState(true);
   const [shiftImage, setShiftImage] = useState(false);
@@ -75,34 +76,10 @@ console.log("shiftImage:", shiftImage);
   return (
     <section className="relative h-screen w-full
     text-[hsl(var(--foreground))]
-    overflow-hidden hero-bg">
+    overflow-hidden">
       
 
-{/* BACKGROUND SHAPES */}
-<div className="absolute inset-0 z-0 pointer-events-none select-none">
-
-  {/* big soft blue aura */}
-  <div className="absolute w-[100vw] h-[50vw] rounded-full 
-    bg-[#003459]/25 blur-[120px] 
-    top-[-5vh] left-[5vw]">
-  </div>
-
-  {/* accent right glow */}
-  <div className="absolute w-[30vw] h-[30vw] rounded-full 
-    bg-[#00A8E8]/20 blur-[100px]
-    top-[25vh] right-[2vw]">
-  </div>
-
-</div>
-{/* FLOATING PARTICLES */}
-<FloatingParticle size={30} color="rgba(0,126,167,0.6)" top="22vh" left="18vw" />
-<FloatingParticle size={16} color="rgba(0,168,232,0.6)" top="40vh" left="32vw" />
-<FloatingParticle size={12} color="rgba(0,52,89,0.6)" top="60vh" left="25vw" />
-<FloatingParticle size={20} color="rgba(0,126,167,0.5)" top="28vh" left="60vw" />
-<FloatingParticle size={16} color="rgba(0,168,232,0.55)" top="48vh" left="72vw" />
-<FloatingParticle size={12} color="rgba(0,52,89,0.50)" top="68vh" left="52vw" />
-<FloatingParticle size={45} color="rgba(0,168,232,0.50)" top="35vh" left="85vw" />
-
+<SectionParticles count={12} />
 
 
       {/* BACKGROUND SHAPES, NOISE, GLOW CAN BE ADDED HERE */}

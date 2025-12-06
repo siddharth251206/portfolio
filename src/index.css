@@ -78,9 +78,9 @@ html {
 
 @layer base {
  :root {
---background: 0 0% 100%;
- --radius: 10px;
- --foreground: 197 65% 6%;           /* #00171F */
+--background: #FAF9F6;    /* Light mode cream white */
+    --foreground: #00171F;
+    --radius: 10px;
 
   --card: 0 0% 100%;
   --card-foreground: 197 65% 6%;
@@ -102,14 +102,21 @@ html {
   --shadow: 0 0% 0% / 0.05;
   --shadow-strong: 0 0% 0% / 0.25;
 --about-bg: url('/about-bg-light.jpg'); 
-   --hero-bg: var(--hero-bg-light);
     --toggle-knob-left: 4px;
+    --card-bg: rgba(229, 228, 228, 0.47);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: rgba(0, 0, 0, 0.12);
+   --btn-secondary-bg: rgba(255, 255, 255, 0.65);
+  --btn-secondary-border: rgba(0, 0, 0, 0.12);
+  --btn-secondary-text: #000;
+  --btn-secondary-hover: rgba(255, 255, 255, 0.85);
+  --input-border: rgb(173, 171, 171);
 }
 
  .dark {
- --background: 197 65% 6%; /* fallback */
-  --foreground: 0 0% 100%;            /* white */
-  --radius: 10px;
+--background: #001B2E;   /* Dark navy blue */
+    --foreground: #ffffff;
+      --radius: 10px;
   --card: 197 60% 12%;                /* #003459 */
   --card-foreground: 0 0% 100%;
 
@@ -129,25 +136,28 @@ html {
 --about-bg: url('/about-bg.jpg'); 
   --shadow: 0 0% 0% / 0.45;
   --shadow-strong: 0 0% 0% / 0.75;
-  --hero-bg: var(--hero-bg-dark);
    --toggle-knob-left: 32px;
-}
+   --card-bg: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.12);
+  --btn-secondary-border: rgba(255, 255, 255, 0.25);
+  --btn-secondary-text: #fff;
+  --btn-secondary-hover: rgba(255, 255, 255, 0.2);
+  --input-border: rgb(142, 142, 142);
+  
+}}
 body{
   overflow: hidden;
 }
+
   html, body {
     overflow-x: hidden;
     min-height: 100%;
- background: linear-gradient(
-      to bottom,
-      hsl(var(--background)) 0%,
-      hsl(var(--background)) 100%
-    );
-      background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-  }
+    background: var(--background);
+  min-height: 100%;
+  color: var(--foreground);
+  overflow-x: hidden;
 }
 
 /* ============================= */

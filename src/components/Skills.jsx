@@ -1,8 +1,47 @@
 import { motion } from "framer-motion";
 import FloatingParticle from "../components/FloatingParticle";
 import { sectionReveal, staggerChildren, itemReveal } from "../animations/reveal";
+import { MonitorCog, Code2, Brain, Wrench } from "lucide-react";
+import SectionParticles from "./SectionParticles";
 
 export default function Skills() {
+  const categories = [
+    {
+      title: "Web Development",
+      icon: <MonitorCog size={70} strokeWidth={1.5} />,
+      skills: [
+        "React.js", "Next.js / Vite", "TailwindCSS",
+        "Node.js", "Express", "MongoDB",
+        "SQL / PostgreSQL", "REST APIs"
+      ]
+    },
+    {
+      title: "Programming Languages",
+      icon: <Code2 size={70} strokeWidth={1.5} />,
+      skills: [
+        "C++", "JavaScript", "TypeScript",
+        "Python (soon)", "Bash / Shell"
+      ]
+    },
+    {
+      title: "CS & Problem Solving",
+      icon: <Brain size={70} strokeWidth={1.5} />,
+      skills: [
+        "Data Structures", "Algorithms",
+        "Dynamic Programming", "Graphs & Trees",
+        "Competitive Programming"
+      ]
+    },
+    {
+      title: "Tools & Platforms",
+      icon: <Wrench size={70} strokeWidth={1.5} />,
+      skills: [
+        "Git / GitHub", "Linux", "Figma",
+        "Firebase", "VS Code", "Render / Vercel"
+      ]
+    }
+  ];
+
   return (
     <motion.section
       variants={sectionReveal}
@@ -13,35 +52,8 @@ export default function Skills() {
       className="relative py-32 px-6 md:px-12 text-[hsl(var(--foreground))] overflow-hidden"
     >
 
-      {/* BACKGROUND SHAPES */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        <div className="absolute w-[100vw] h-[50vw] rounded-full 
-          bg-[#003459]/25 blur-[120px] 
-          top-[-5vh] left-[5vw]"
-        ></div>
-
-        <div className="absolute w-[30vw] h-[30vw] rounded-full 
-          bg-[#00A8E8]/20 blur-[100px]
-          top-[25vh] right-[2vw]"
-        ></div>
-      </div>
-
-      {/* FLOATING PARTICLES */}
-      <FloatingParticle size={50} color="rgba(0,126,167,0.6)" top="22vh" left="18vw" />
-      <FloatingParticle size={26} color="rgba(0,168,232,0.6)" top="36vh" left="32vw" />
-      <FloatingParticle size={12} color="rgba(0,52,89,0.6)" top="60vh" left="10vw" />
-      <FloatingParticle size={20} color="rgba(0,126,167,0.5)" top="28vh" left="60vw" />
-      <FloatingParticle size={16} color="rgba(0,168,232,0.55)" top="48vh" left="60vw" />
-      <FloatingParticle size={12} color="rgba(0,52,89,0.50)" top="85vh" left="52vw" />
-      <FloatingParticle size={16} color="rgba(0,168,232,0.50)" top="35vh" left="85vw" />
-
-      {/* BACKGROUND SUBTLE ACCENTS */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute w-72 h-72 bg-[hsl(var(--accent))/0.25] rounded-full blur-[120px] top-20 left-10"></div>
-        <div className="absolute w-96 h-96 bg-blue-400/20 rounded-full blur-[150px] bottom-20 right-10"></div>
-      </div>
-
-      {/* HEADING */}
+<SectionParticles count={12} />
+      {/* SECTION HEADING */}
       <motion.h2 
         variants={itemReveal}
         className="relative text-5xl md:text-6xl font-extrabold text-center mb-20"
@@ -50,100 +62,105 @@ export default function Skills() {
         <span className="absolute left-1/2 -bottom-3 -translate-x-1/2 w-24 h-[3px] bg-[hsl(var(--accent))] rounded-full"></span>
       </motion.h2>
 
-      {/* SKILL CARDS (Staggered Reveal) */}
+      {/* SKILL GRID */}
       <motion.div 
         variants={staggerChildren}
         className="
           relative z-10
-          grid grid-cols-1 md:grid-cols-3 gap-10
-          max-w-6xl mx-auto
+          grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10
+          max-w-7xl mx-auto
         "
       >
+        {categories.map((cat, i) => (
+          <motion.div
+            key={i}
+            variants={itemReveal}
+            whileHover={{ scale: 1.05, y: -6 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="
+  group p-8 rounded-3xl relative overflow-hidden
 
-        {/* FRONTEND */}
-        <motion.div 
-          variants={itemReveal}
-          whileHover={{ scale: 1.04 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="
-            group p-10 rounded-3xl
-            backdrop-blur-xl
-            bg-white/40 dark:bg-white/10
-            border border-white/30 dark:border-white/10
-            shadow-xl shadow-black/20
-            relative overflow-hidden
-          "
-        >
-          <div className="absolute -top-5 -right-5 text-[4rem] opacity-10 group-hover:opacity-20 transition-all">⚛️</div>
-          <h3 className="text-2xl font-bold mb-6 text-[hsl(var(--accent))]">Frontend</h3>
+  /* ULTRA TRANSPARENT GLASS */
+  backdrop-blur-[28px]
+  bg-white/5 dark:bg-white/2
 
-          <motion.ul 
-            variants={staggerChildren}
-            className="space-y-3 text-lg leading-relaxed"
+  /* CRISP GLASS BORDER */
+  border border-white/30 dark:border-white/5
+
+  /* SUBTLE GLASS SHEEN HIGHLIGHT */
+  before:absolute before:inset-0 before:rounded-3xl
+  before:bg-gradient-to-br before:from-white/25 before:to-transparent
+  dark:before:from-white/5 dark:before:to-transparent
+  before:pointer-events-none
+
+  /* FLOATING SHADOW */
+  shadow-[0_8px_25px_rgba(0,0,0,0.10)]
+  hover:shadow-[0_12px_40px_rgba(0,0,0,0.20)]
+
+  transition-all duration-500
+"
+          
           >
-            {["React.js", "Next.js / Vite", "TailwindCSS", "JavaScript / TypeScript", "CSS Animations"]
-              .map((skill, i) => (
-                <motion.li key={i} variants={itemReveal}>{skill}</motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
+            {/* GRADIENT BORDER */}
+            <div className="
+              absolute inset-0 rounded-3xl 
+              border border-transparent 
+              group-hover:border-[hsl(var(--accent))]
+              opacity-40 group-hover:opacity-80
+              transition-all duration-500
+              pointer-events-none
+            "></div>
 
-        {/* BACKEND */}
-        <motion.div 
-          variants={itemReveal}
-          whileHover={{ scale: 1.04 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="
-            group p-10 rounded-3xl
-            backdrop-blur-xl
-            bg-white/40 dark:bg-white/10
-            border border-white/30 dark:border-white/10
-            shadow-xl shadow-black/20
-            relative overflow-hidden
-          "
-        >
-          <div className="absolute -top-5 -right-5 text-[4rem] opacity-10 group-hover:opacity-20 transition-all">🛠️</div>
-          <h3 className="text-2xl font-bold mb-6 text-[hsl(var(--accent))]">Backend</h3>
+            {/* SHINE EFFECT */}
+            <div className="
+              absolute inset-0 
+              bg-gradient-to-br from-white/20 to-transparent
+              opacity-0 group-hover:opacity-20
+              transition-opacity duration-500
+              pointer-events-none
+            "></div>
 
-          <motion.ul 
-            variants={staggerChildren}
-            className="space-y-3 text-lg leading-relaxed"
-          >
-            {["Node.js", "Express", "MongoDB", "SQL / PostgreSQL", "REST APIs"]
-              .map((skill, i) => (
-                <motion.li key={i} variants={itemReveal}>{skill}</motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
+            {/* FLOATING ICON */}
+            <div className="
+              absolute -top-1 -right-0 
+              opacity-10 group-hover:opacity-20 
+              translate-y-2 group-hover:translate-y-0
+              transition-all duration-500
+            ">
+              {cat.icon}
+            </div>
 
-        {/* OTHER */}
-        <motion.div 
-          variants={itemReveal}
-          whileHover={{ scale: 1.04 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="
-            group p-10 rounded-3xl
-            backdrop-blur-xl
-            bg-white/40 dark:bg-white/10
-            border border-white/30 dark:border-white/10
-            shadow-xl shadow-black/20
-            relative overflow-hidden
-          "
-        >
-          <div className="absolute -top-5 -right-5 text-[4rem] opacity-10 group-hover:opacity-20 transition-all">🚀</div>
-          <h3 className="text-2xl font-bold mb-6 text-[hsl(var(--accent))]">Other</h3>
+            {/* TITLE */}
+            <h3 className="text-2xl font-bold mb-6 text-[hsl(var(--accent))]">
+              {cat.title}
+            </h3>
 
-          <motion.ul 
-            variants={staggerChildren}
-            className="space-y-3 text-lg leading-relaxed"
-          >
-            {["Git / GitHub", "Figma", "Linux", "Firebase", "Problem Solving"]
-              .map((skill, i) => (
-                <motion.li key={i} variants={itemReveal}>{skill}</motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
-
+            {/* SKILL LIST */}
+            <motion.ul
+              variants={staggerChildren}
+              className="space-y-3 text-lg leading-relaxed"
+            >
+              {cat.skills.map((skill, idx) => (
+                <motion.li
+                  key={idx}
+                  variants={itemReveal}
+                  className="
+                    relative pl-3
+                    before:content-['']
+                    before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2
+                    before:w-1.5 before:h-1.5 before:rounded-full
+                    before:bg-[hsl(var(--accent))]
+                    before:opacity-60
+                    hover:before:opacity-100
+                    transition-all
+                  "
+                >
+                  {skill}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        ))}
       </motion.div>
 
     </motion.section>

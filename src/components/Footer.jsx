@@ -1,3 +1,148 @@
-export default function Footer() {
-  return <div className="text-foreground">Footer Section</div>;
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin, Instagram } from "lucide-react";
+import { sectionReveal, itemReveal, staggerChildren } from "../animations/reveal";
+import SectionParticles from "../components/SectionParticles";
+
+export default function Contact() {
+  return (
+    <motion.section
+      id="contact"
+      variants={sectionReveal}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
+      className="relative py-32 px-6 md:px-12 text-[hsl(var(--foreground))] overflow-hidden"
+    >
+      {/* PARTICLES */}
+      <SectionParticles count={10} />
+
+      {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute w-96 h-96 bg-[var(--bg-glow-2)] rounded-full blur-[120px] top-10 left-10"></div>
+        <div className="absolute w-[500px] h-[500px] bg-[var(--bg-glow-3)] rounded-full blur-[160px] bottom-10 right-10"></div>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+
+        {/* LEFT TEXT SIDE */}
+        <motion.div variants={staggerChildren} className="space-y-6">
+          <motion.h2 
+            variants={itemReveal}
+            className="text-5xl md:text-6xl font-extrabold leading-tight"
+          >
+            Let’s Build<br />
+            Something <span className="text-[hsl(var(--accent))]">Great</span>
+          </motion.h2>
+
+          <motion.p
+            variants={itemReveal}
+            className="text-lg text-[hsl(var(--muted-foreground))] max-w-md leading-relaxed"
+          >
+            Whether you want to collaborate, discuss an idea, or just say hi —
+            my inbox is always open. I'll get back to you as soon as I can.
+          </motion.p>
+
+          {/* SOCIAL ICONS */}
+          <motion.div variants={itemReveal} className="flex gap-5 pt-4">
+            {[
+              { icon: <Github />, link: "https://github.com/yourname" },
+              { icon: <Linkedin />, link: "https://linkedin.com/in/yourname" },
+              { icon: <Instagram />, link: "https://instagram.com/yourname" },
+            ].map((social, i) => (
+              <a 
+                key={i}
+                href={social.link}
+                target="_blank"
+                className="p-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 
+                hover:bg-[hsl(var(--accent))] hover:text-black transition-all"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT FORM SIDE */}
+        <motion.form 
+          variants={staggerChildren}
+          className="
+            relative p-10 rounded-3xl
+            backdrop-blur-2xl
+            bg-white/10 dark:bg-white/5
+            border border-white/20 dark:border-white/10
+            shadow-xl shadow-black/30
+            space-y-8
+          "
+        >
+          {/* NAME FIELD */}
+          <motion.div variants={itemReveal} className="relative">
+            <input
+              type="text"
+              required
+              className="w-full bg-transparent border-b border-[rbg(var(--input-vorder))]
+              focus:border-[hsl(var(--accent))] outline-none py-3 peer"
+            />
+            <label
+              className="
+                absolute left-0 top-3 text-[hsl(var(--muted-foreground))]
+                transition-all peer-focus:-top-4 peer-focus:text-sm peer-focus:text-[hsl(var(--accent))]
+                peer-valid:-top-4 peer-valid:text-sm
+              "
+            >
+              Your Name
+            </label>
+          </motion.div>
+
+          {/* EMAIL FIELD */}
+          <motion.div variants={itemReveal} className="relative">
+            <input
+              type="email"
+              required
+              className="w-full bg-transparent border-b border-[rbg(var(--input-vorder))] 
+              focus:border-[hsl(var(--accent))] outline-none py-3 peer"
+            />
+            <label
+              className="
+                absolute left-0 top-3 text-[hsl(var(--muted-foreground))]
+                transition-all peer-focus:-top-4 peer-focus:text-sm peer-focus:text-[hsl(var(--accent))]
+                peer-valid:-top-4 peer-valid:text-sm
+              "
+            >
+              Email
+            </label>
+          </motion.div>
+
+          {/* MESSAGE FIELD */}
+          <motion.div variants={itemReveal} className="relative">
+            <textarea
+              required
+              rows="4"
+              className="w-full bg-transparent border-b border-[rbg(var(--input-vorder))] 
+              focus:border-[hsl(var(--accent))] outline-none py-3 peer resize-none"
+            />
+            <label
+              className="
+                absolute left-0 top-3 text-[hsl(var(--muted-foreground))]
+                transition-all peer-focus:-top-4 peer-focus:text-sm peer-focus:text-[hsl(var(--accent))]
+                peer-valid:-top-4 peer-valid:text-sm
+              "
+            >
+              Message
+            </label>
+          </motion.div>
+
+          {/* SUBMIT BUTTON */}
+          <motion.button
+            variants={itemReveal}
+            className="px-6 py-3 rounded-xl btn text-black font-semibold
+            hover:opacity-90 transition-all"
+          >
+            Send Message
+          </motion.button>
+
+        </motion.form>
+      </div>
+    </motion.section>
+  );
 }

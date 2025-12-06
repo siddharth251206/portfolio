@@ -40,7 +40,7 @@ export default function CustomCursor() {
           height: 40,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.6), rgba(255,255,255,0.05))",
+            "radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0.05))",
           mixBlendMode: "difference",
         }}
       />
@@ -55,8 +55,8 @@ export default function CustomCursor() {
         }}
         transition={{ type: "spring", mass: 0.2, damping: 12 }}
         style={{
-          width: 8,
-          height: 8,
+          width: 10,
+          height: 10,
           borderRadius: "50%",
           background: "white",
           mixBlendMode: "difference",
