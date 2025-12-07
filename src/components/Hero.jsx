@@ -47,7 +47,7 @@ const drop = {
 
   // Animation sequence
   useEffect(() => {
-    const t1 = setTimeout(() => setShowHello(false), 1500);
+    const t1 = setTimeout(() => setShowHello(false), 2000);
     const t2 = setTimeout(() => setShiftImage(true), 1600);
     const t3 = setTimeout(() => setShowText(true), 1900);
 
