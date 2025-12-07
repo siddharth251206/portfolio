@@ -21,7 +21,7 @@ export const projects = [
     tech: ["React+Vite", "TailwindCSS", "Framer Motion", "Lucide-react"],
     image: "https://res.cloudinary.com/djqtmil10/image/upload/v1765047785/Screenshot_2025-12-07_003250_qmpxdl.png",
     github: "https://github.com/siddharth251206/portfolio",
-    demo: "#",
+    demo: "https://siddharth-sheth.vercel.app/",
   },
   {
     title: "MangroSafe",
