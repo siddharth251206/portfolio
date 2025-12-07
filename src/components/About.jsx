@@ -182,13 +182,22 @@ export default function About() {
             variants={staggerChildren} 
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8 sm:pt-10"
           >
-            <motion.button variants={itemReveal} className="btn w-full sm:w-auto" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
->
+            <motion.button 
+              variants={itemReveal} 
+              className="btn w-full sm:w-auto"
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+            >
               View Projects
             </motion.button>
-            <motion.button variants={itemReveal} className="btn w-full sm:w-auto">
-              Download Resume
-            </motion.button>
+            <motion.a
+              variants={itemReveal}
+              href="/Siddharth_Sheth.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn w-full sm:w-auto text-center"
+            >
+              Resume
+            </motion.a>
           </motion.div>
 
         </motion.div>
