@@ -10,7 +10,15 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'LogoText';
+  src: url('/src/assets/Amsterdam_Handwriting.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 /* ============================= */
 /*         2. THEME TOKENS       */
 /*  (computed variables only)    */
@@ -20,10 +28,16 @@ html {
   scroll-behavior: smooth;
 }
 
-
+/* Mobile: show default cursor */
+@media (max-width: 768px) {
+  html {
+    cursor: auto !important;
+  }
+}
 
 @theme {
   --font-easter: "EasterEgg", sans-serif;
+  --font-logotext: "LogoText", sans-serif;
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -111,7 +125,7 @@ html {
 
   --shadow: 0 0% 0% / 0.05;
   --shadow-strong: 0 0% 0% / 0.25;
---about-bg: url('/about-bg-light.jpg'); 
+--about-bg: url('https://res.cloudinary.com/djqtmil10/image/upload/v1765088971/about-bg-light_obq0st.jpg'); 
     --toggle-knob-left: 4px;
     --card-bg: rgba(229, 228, 228, 0.47);
   --card-border: rgba(0, 0, 0, 0.08);
@@ -143,7 +157,7 @@ html {
   --accent-foreground: 0 0% 5%;
 
   --hover: 197 45% 15%;
---about-bg: url('/about-bg.jpg'); 
+--about-bg: url('https://res.cloudinary.com/djqtmil10/image/upload/v1765088971/about-bg_jox16c.avif'); 
   --shadow: 0 0% 0% / 0.45;
   --shadow-strong: 0 0% 0% / 0.75;
    --toggle-knob-left: 32px;
@@ -158,7 +172,7 @@ html {
   
 }}
 body{
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
   html, body {
@@ -299,6 +313,11 @@ body{
     0 4px 15px -3px hsla(var(--foreground) / 0.20),
     inset 0 0 0 0 hsla(var(--accent) / 0.12);
 
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
 
 /* SHINE SWEEP LAYER */
 &::before {
@@ -356,7 +375,7 @@ body{
 }
 
 @utility hellosweep {
-  font-size: 8vw;                     /* perfect size */
+  font-size: clamp(3rem, 8vw, 8rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   opacity: 0.18;
@@ -419,17 +438,32 @@ body{
   position: absolute;
   left: 0;
   width: 100%;
-  height: 110px; /* adjust as needed */
+  height: 110px;
   
   background-image: url('/torn.png');
-  background-size: 100% 100%; /* STRETCH CLEANLY */
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-background-blend-mode: multiply;
+  background-blend-mode: multiply;
 
-  transform: translateY(-55px); /* half the height */
+  transform: translateY(-55px);
   pointer-events: none;
   z-index: 20;
+}
+
+/* Responsive torn divider */
+@media (max-width: 768px) {
+  .torn-divider {
+    height: 80px;
+    transform: translateY(-40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .torn-divider {
+    height: 60px;
+    transform: translateY(-30px);
+  }
 }
 
 .torn-divider::after {
@@ -490,4 +524,11 @@ background-blend-mode: multiply;
     height 150ms ease,
     background 150ms ease,
     transform 40ms linear;
+}
+
+/* Hide custom cursor on mobile */
+@media (max-width: 768px) {
+  #cursor-contrast {
+    display: none;
+  }
 }

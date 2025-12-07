@@ -10,8 +10,8 @@ export default function Skills() {
       title: "Web Development",
       icon: <MonitorCog size={70} strokeWidth={1.5} />,
       skills: [
-        "React.js", "Next.js / Vite", "TailwindCSS",
-        "Node.js", "Express", "MongoDB",
+        "React.js", "Vite", "TailwindCSS",
+        "Node.js", "Express", "Django",
         "SQL / PostgreSQL", "REST APIs"
       ]
     },
@@ -19,8 +19,8 @@ export default function Skills() {
       title: "Programming Languages",
       icon: <Code2 size={70} strokeWidth={1.5} />,
       skills: [
-        "C++", "JavaScript", "TypeScript",
-        "Python (soon)", "Bash / Shell"
+        "C","C++", "JavaScript",
+        "Python"
       ]
     },
     {
@@ -36,8 +36,7 @@ export default function Skills() {
       title: "Tools & Platforms",
       icon: <Wrench size={70} strokeWidth={1.5} />,
       skills: [
-        "Git / GitHub", "Linux", "Figma",
-        "Firebase", "VS Code", "Render / Vercel"
+        "Git / GitHub", "Figma", "VS Code", "Render / Vercel", "Supabase", "NeonDB"
       ]
     }
   ];
@@ -49,17 +48,18 @@ export default function Skills() {
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
       id="skills"
-      className="relative py-32 px-6 md:px-12 text-[hsl(var(--foreground))] overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 text-[hsl(var(--foreground))] overflow-hidden"
     >
 
-<SectionParticles count={12} />
+      <SectionParticles count={12} />
+      
       {/* SECTION HEADING */}
       <motion.h2 
         variants={itemReveal}
-        className="relative text-5xl md:text-6xl font-extrabold text-center mb-20"
+        className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-12 sm:mb-16 lg:mb-20"
       >
         Skills
-        <span className="absolute left-1/2 -bottom-3 -translate-x-1/2 w-24 h-[3px] bg-[hsl(var(--accent))] rounded-full"></span>
+        <span className="absolute left-1/2 -bottom-3 -translate-x-1/2 w-20 sm:w-24 h-[3px] bg-[hsl(var(--accent))] rounded-full"></span>
       </motion.h2>
 
       {/* SKILL GRID */}
@@ -67,7 +67,7 @@ export default function Skills() {
         variants={staggerChildren}
         className="
           relative z-10
-          grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10
+          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10
           max-w-7xl mx-auto
         "
       >
@@ -78,28 +78,27 @@ export default function Skills() {
             whileHover={{ scale: 1.05, y: -6 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="
-  group p-8 rounded-3xl relative overflow-hidden
+              group p-6 sm:p-8 rounded-3xl relative overflow-hidden
 
-  /* ULTRA TRANSPARENT GLASS */
-  backdrop-blur-[28px]
-  bg-white/5 dark:bg-white/2
+              /* ULTRA TRANSPARENT GLASS */
+              backdrop-blur-[28px]
+              bg-white/5 dark:bg-white/2
 
-  /* CRISP GLASS BORDER */
-  border border-white/30 dark:border-white/5
+              /* CRISP GLASS BORDER */
+              border border-white/30 dark:border-white/5
 
-  /* SUBTLE GLASS SHEEN HIGHLIGHT */
-  before:absolute before:inset-0 before:rounded-3xl
-  before:bg-gradient-to-br before:from-white/25 before:to-transparent
-  dark:before:from-white/5 dark:before:to-transparent
-  before:pointer-events-none
+              /* SUBTLE GLASS SHEEN HIGHLIGHT */
+              before:absolute before:inset-0 before:rounded-3xl
+              before:bg-gradient-to-br before:from-white/25 before:to-transparent
+              dark:before:from-white/5 dark:before:to-transparent
+              before:pointer-events-none
 
-  /* FLOATING SHADOW */
-  shadow-[0_8px_25px_rgba(0,0,0,0.10)]
-  hover:shadow-[0_12px_40px_rgba(0,0,0,0.20)]
+              /* FLOATING SHADOW */
+              shadow-[0_8px_25px_rgba(0,0,0,0.10)]
+              hover:shadow-[0_12px_40px_rgba(0,0,0,0.20)]
 
-  transition-all duration-500
-"
-          
+              transition-all duration-500
+            "
           >
             {/* GRADIENT BORDER */}
             <div className="
@@ -120,25 +119,26 @@ export default function Skills() {
               pointer-events-none
             "></div>
 
-            {/* FLOATING ICON */}
+            {/* FLOATING ICON - Responsive size */}
             <div className="
               absolute -top-1 -right-0 
               opacity-10 group-hover:opacity-20 
               translate-y-2 group-hover:translate-y-0
               transition-all duration-500
+              scale-75 sm:scale-100
             ">
               {cat.icon}
             </div>
 
             {/* TITLE */}
-            <h3 className="text-2xl font-bold mb-6 text-[hsl(var(--accent))]">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-[hsl(var(--accent))]">
               {cat.title}
             </h3>
 
             {/* SKILL LIST */}
             <motion.ul
               variants={staggerChildren}
-              className="space-y-3 text-lg leading-relaxed"
+              className="space-y-2 sm:space-y-3 text-base sm:text-lg leading-relaxed"
             >
               {cat.skills.map((skill, idx) => (
                 <motion.li
