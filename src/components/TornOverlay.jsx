@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const lines = [
@@ -22,7 +22,7 @@ const lines = [
   "critical section? never critical",
   "deadlock avoided through sheer luck",
   "race condition won by the slower thread",
-  "0xDEAD wasn’t dead after all",
+  "0xDEAD wasn't dead after all",
   "bits flipped without witnesses",
   "checksum altered by cosmic rays",
   "packet arrived before it was sent",
@@ -35,31 +35,48 @@ const lines = [
 ];
 
 export default function TornOverlay() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const scribbles = useMemo(() => {
     const isDark = document.documentElement.classList.contains("dark");
 
     const minOpacity = isDark ? 0.35 : 0.15;
     const maxOpacity = isDark ? 0.65 : 0.35;
 
-    const count = Math.floor(Math.random() * 2) + 2; 
+    const count = isMobile ? 2 : (Math.floor(Math.random() * 2) + 2); 
 
     const zones = Array.from({ length: count }, (_, i) => ({
       xMin: (i * 100) / count,
       xMax: ((i + 1) * 100) / count,
     }));
 
-    return zones.map((zone) => ({
+    return zones.map((zone, index) => ({
       text: lines[Math.floor(Math.random() * lines.length)],
 
-      left: `${zone.xMin + Math.random() * (zone.xMax - zone.xMin - 15) + 8}%`,
+      left: isMobile 
+        ? `${zone.xMin + Math.random() * (zone.xMax - zone.xMin - 20) + 10}%`
+        : `${zone.xMin + Math.random() * (zone.xMax - zone.xMin - 15) + 8}%`,
 
-      top: `${30 + Math.random() * 40}%`, 
+      top: isMobile
+        ? `${35 + Math.random() * 30}%` 
+        : `${30 + Math.random() * 40}%`, 
 
       opacity: Math.random() * (maxOpacity - minOpacity) + minOpacity,
       rotate: Math.random() * 6 - 3,
-      scale: Math.random() * 0.2 + 0.9,
+      scale: isMobile 
+        ? Math.random() * 0.15 + 0.7  
+        : Math.random() * 0.2 + 0.9,  
     }));
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
@@ -75,7 +92,7 @@ export default function TornOverlay() {
             top: s.top,
             transform: `rotate(${s.rotate}deg) scale(${s.scale})`,
             fontFamily: "EasterEggFont, monospace",
-            fontSize: "1.05rem",
+            fontSize: isMobile ? "0.7rem" : "1.05rem", 
             pointerEvents: "none",
             whiteSpace: "nowrap",
             color: "black",
