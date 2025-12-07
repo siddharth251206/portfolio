@@ -142,6 +142,41 @@ export default function About() {
 
           </motion.div>
 
+         {/* ACHIEVEMENTS BLOCK */}
+<motion.div 
+  variants={staggerChildren}
+  className="
+    mt-10 sm:mt-12 p-6 sm:p-8 
+    rounded-2xl bg-white/10 dark:bg-white/5 
+    border border-white/20 dark:border-white/10
+    backdrop-blur-2xl shadow-xl shadow-black/30
+  "
+>
+  <motion.h3 
+    variants={itemReveal}
+    className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-[hsl(var(--accent))]"
+  >
+    Achievements
+  </motion.h3>
+
+  <div className="space-y-3 sm:space-y-4 text-base sm:text-lg leading-relaxed">
+
+    <motion.p variants={itemReveal}>
+      • Selected in the <span className="font-semibold">Internal Hackathon Round</span> of Smart India Hackathon 2025 (SIH).
+    </motion.p>
+
+    <motion.p variants={itemReveal}>
+      • <span className="font-semibold">Finalist</span> — Web Wonders (Team Web Wonders).
+    </motion.p>
+
+    <motion.p variants={itemReveal}>
+      • <span className="font-semibold">Top 30 Finalist</span> in the ACM Summer Coding Challenge, SVNIT.
+    </motion.p>
+
+  </div>
+</motion.div>
+
+
           {/* BUTTONS */}
           <motion.div 
             variants={staggerChildren} 
