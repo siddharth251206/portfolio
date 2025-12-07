@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .favicon-text {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 40px;
+      fill: white;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+  </style>
+  <text x="50%" y="50%" class="favicon-text">SS</text>
+</svg>
