@@ -5,10 +5,9 @@ export default function FloatingParticle({
   color = "rgba(255,255,255,0.3)",
   top,
   left,
-  shape = "circle", // circle | diamond | triangle | square | blob
+  shape = "circle", 
 }) {
   
-  // SHAPE STYLES
   const shapeStyles = {
     circle: { borderRadius: "50%" },
 

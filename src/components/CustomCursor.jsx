@@ -7,14 +7,12 @@ export default function CustomCursor() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if device is mobile/tablet
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // Don't add cursor listeners on mobile
     if (isMobile) {
       return () => window.removeEventListener('resize', checkMobile);
     }
@@ -40,7 +38,6 @@ export default function CustomCursor() {
     };
   }, [isMobile]);
 
-  // Don't render cursor on mobile devices
   if (isMobile) {
     return null;
   }

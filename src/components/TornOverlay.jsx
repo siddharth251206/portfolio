@@ -38,11 +38,10 @@ export default function TornOverlay() {
   const scribbles = useMemo(() => {
     const isDark = document.documentElement.classList.contains("dark");
 
-    // Opacity settings different for dark mode
     const minOpacity = isDark ? 0.35 : 0.15;
     const maxOpacity = isDark ? 0.65 : 0.35;
 
-    const count = Math.floor(Math.random() * 2) + 2; // 2–3 scribbles
+    const count = Math.floor(Math.random() * 2) + 2; 
 
     const zones = Array.from({ length: count }, (_, i) => ({
       xMin: (i * 100) / count,
@@ -52,12 +51,9 @@ export default function TornOverlay() {
     return zones.map((zone) => ({
       text: lines[Math.floor(Math.random() * lines.length)],
 
-      // Horizontally within zone
       left: `${zone.xMin + Math.random() * (zone.xMax - zone.xMin - 15) + 8}%`,
 
-      // MUCH DEEPER into torn strip (guaranteed safe)
       top: `${30 + Math.random() * 40}%`, 
-      // 30%–70% vertically → no touching edges
 
       opacity: Math.random() * (maxOpacity - minOpacity) + minOpacity,
       rotate: Math.random() * 6 - 3,

@@ -13,10 +13,10 @@ const sendEmail = (e) => {
 
   emailjs
     .sendForm(
-      "service_wuaexb9",     // service_xxx from EmailJS
-      "template_6v8hwv3",    // template_xxx from EmailJS
+      "service_wuaexb9",     
+      "template_6v8hwv3",    
       formRef.current,
-      "53K4RKN6pslJLDVIG"      // from EmailJS
+      "53K4RKN6pslJLDVIG"      
     )
     .then(() => {
       alert("Message sent successfully! 🚀");

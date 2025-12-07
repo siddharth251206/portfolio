@@ -11,7 +11,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
-      // UPDATE ACTIVE NAV BASED ON SECTION VISIBILITY
       const sections = ["hero", "about", "skills", "projects", "contact"];
       for (let sec of sections) {
         const el = document.getElementById(sec);
