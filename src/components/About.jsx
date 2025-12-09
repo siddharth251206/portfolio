@@ -166,11 +166,11 @@ export default function About() {
     </motion.p>
 
     <motion.p variants={itemReveal}>
-      • <span className="font-semibold">Finalist</span> — Web Wonders (Team Web Wonders).
+      • <span className="font-semibold">Finalist</span> — Web Wonders (Team DOMinators).
     </motion.p>
 
     <motion.p variants={itemReveal}>
-      • <span className="font-semibold">Top 30 Finalist</span> in the ACM Summer Coding Challenge, SVNIT.
+      • <span className="font-semibold">Top 30 Finalist</span> in the ACM Summer Coding Challenge 2025, SVNIT.
     </motion.p>
 
   </div>
