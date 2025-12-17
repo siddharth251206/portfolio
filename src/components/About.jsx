@@ -191,7 +191,7 @@ export default function About() {
             </motion.button>
             <motion.a
               variants={itemReveal}
-              href="/Siddharth_Sheth.pdf"
+              href="/Siddharth_Sheth_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn w-full sm:w-auto text-center"
