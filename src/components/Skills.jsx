@@ -1,45 +1,13 @@
 import { motion } from "framer-motion";
 import FloatingParticle from "../components/FloatingParticle";
 import { sectionReveal, staggerChildren, itemReveal } from "../animations/reveal";
-import { MonitorCog, Code2, Brain, Wrench } from "lucide-react";
+import * as Icons from "lucide-react";
 import SectionParticles from "./SectionParticles";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Skills() {
-  const categories = [
-    {
-      title: "Web Development",
-      icon: <MonitorCog size={70} strokeWidth={1.5} />,
-      skills: [
-        "React.js", "Vite", "TailwindCSS",
-        "Node.js", "Express", "Django",
-        "SQL / PostgreSQL", "REST APIs"
-      ]
-    },
-    {
-      title: "Programming Languages",
-      icon: <Code2 size={70} strokeWidth={1.5} />,
-      skills: [
-        "C","C++", "JavaScript",
-        "Python"
-      ]
-    },
-    {
-      title: "CS & Problem Solving",
-      icon: <Brain size={70} strokeWidth={1.5} />,
-      skills: [
-        "Data Structures", "Algorithms",
-        "Dynamic Programming", "Graphs & Trees",
-        "Competitive Programming"
-      ]
-    },
-    {
-      title: "Tools & Platforms",
-      icon: <Wrench size={70} strokeWidth={1.5} />,
-      skills: [
-        "Git / GitHub", "Figma", "VS Code", "Render / Vercel", "Supabase", "NeonDB"
-      ]
-    }
-  ];
+  const { portfolioData } = usePortfolio();
+  const { skills } = portfolioData;
 
   return (
     <motion.section
@@ -71,7 +39,9 @@ export default function Skills() {
           max-w-7xl mx-auto
         "
       >
-        {categories.map((cat, i) => (
+        {skills.map((cat, i) => {
+          const IconComponent = Icons[cat.iconName] || Icons.Circle;
+          return (
           <motion.div
             key={i}
             variants={itemReveal}
@@ -127,7 +97,7 @@ export default function Skills() {
               transition-all duration-500
               scale-75 sm:scale-100
             ">
-              {cat.icon}
+              <IconComponent size={70} strokeWidth={1.5} />
             </div>
 
             {/* TITLE */}
@@ -140,7 +110,7 @@ export default function Skills() {
               variants={staggerChildren}
               className="space-y-2 sm:space-y-3 text-base sm:text-lg leading-relaxed"
             >
-              {cat.skills.map((skill, idx) => (
+              {cat.items.map((skill, idx) => (
                 <motion.li
                   key={idx}
                   variants={itemReveal}
@@ -160,7 +130,8 @@ export default function Skills() {
               ))}
             </motion.ul>
           </motion.div>
-        ))}
+          );
+        })}
       </motion.div>
 
     </motion.section>

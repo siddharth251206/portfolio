@@ -1,0 +1,354 @@
+{
+  "hero": {
+    "greeting": "Hi, I'm Siddharth Sheth,",
+    "headline": "a CSE undergrad from SVNIT, learning, building, evolving.",
+    "bio": "I enjoy taking ideas from sketches to screens. Web dev, DSA, design systems, clean UX — all the stuff that makes a product feel alive."
+  },
+  "about": {
+    "tags": [
+      "CSE @ SVNIT",
+      "Developer",
+      "UI/UX Designer",
+      "Passionate",
+      "Learner",
+      "Competitive Programmer"
+    ],
+    "paragraphs": [
+      "I'm Siddharth — a Computer Science undergrad at SVNIT, driven by design, creativity and the thrill of making ideas real.",
+      "I love blending clean UI, smooth motion, and solid engineering to craft digital experiences that feel effortless. Whether I'm polishing a frontend interaction or optimizing backend logic, I want everything I build to feel *intentional*.",
+      "Beyond code, I'm a learner at heart — constantly exploring, experimenting, and pushing myself to design things that not only work well, but look damn good while doing it."
+    ],
+    "achievements": [
+      {
+        "date": "2026",
+        "month": "12",
+        "label": "Runner-Up / Finalist",
+        "title": "Google Winter of Code - DSC NIT SURAT",
+        "description": "Runner-Up / Finalist — GWOC 2026 for building MindSettler, an AI-powered mental health and psycho-education platform that achieved exceptional Google performance, including a 100/100 Lighthouse SEO score and top search visibility."
+      },
+      {
+        "date": "2026",
+        "month": "1",
+        "label": "Finalist",
+        "title": "Genesis - ACM X CEV X GDGC NIT SURAT",
+        "description": "Finalist — Genesis Bootcamp Competition as a solo participant for building an AI-powered content creation platform featuring RAG-based generation, brand voice customization, and real-time content analytics."
+      },
+      {
+        "date": "2026",
+        "month": "2",
+        "label": "Finalist",
+        "title": "Echelon Hackathon - ACM NIT Surat",
+        "description": "Finalist — Echelon Hackathon for developing an AI-powered deepfake voice detection system focused on identifying synthetic and manipulated audio in real time."
+      },
+      {
+        "date": "2026",
+        "month": "5",
+        "label": "Winner",
+        "title": "PowerMind Hackathon- Adani X CDC SVNIT",
+        "description": "Winner — PowerMind Hackathon for building an AI-powered Airport Companion application focused on intelligent passenger assistance and smart travel support."
+      },
+      {
+        "date": "2025",
+        "month": "8",
+        "label": "Top 30",
+        "title": "ACM Summer Coding Challenge 2025 — SVNIT",
+        "description": "Ranked in the Top 30 finalists out of all participants in the Summer Coding Challenge organised by ACM SVNIT."
+      },
+      {
+        "date": "2025",
+        "month": "6",
+        "label": "Finalist",
+        "title": "Web Wonders — Team DOMinators",
+        "description": "Competed as a finalist in the Web Wonders design and development competition representing Team DOMinators."
+      },
+      {
+        "date": "2025",
+        "label": "Selected",
+        "title": "Smart India Hackathon (SIH 2025) — Internal Round",
+        "description": "Selected and cleared the Internal Hackathon Round of SIH 2025 at the institute level.",
+        "month": "11"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "title": "Web Development",
+      "iconName": "MonitorCog",
+      "items": [
+        "React.js",
+        "Vite",
+        "TailwindCSS",
+        "Node.js",
+        "Express",
+        "Django",
+        "SQL / PostgreSQL",
+        "REST APIs"
+      ]
+    },
+    {
+      "title": "Programming Languages",
+      "iconName": "Code2",
+      "items": [
+        "C",
+        "C++",
+        "JavaScript",
+        "Python"
+      ]
+    },
+    {
+      "title": "CS & Problem Solving",
+      "iconName": "Brain",
+      "items": [
+        "Data Structures",
+        "Algorithms",
+        "Dynamic Programming",
+        "Graphs & Trees",
+        "Competitive Programming"
+      ]
+    },
+    {
+      "title": "Tools & Platforms",
+      "iconName": "Wrench",
+      "items": [
+        "Git / GitHub",
+        "Figma",
+        "VS Code",
+        "Render / Vercel",
+        "Supabase",
+        "NeonDB"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "SkyBuddy",
+      "description": "SkyBuddy is an offline-first AI Airport Companion ecosystem and winning project of the PowerMind Hackathon, built to provide intelligent airport navigation, proactive passenger assistance, indoor positioning, BLE-powered smart notifications, and privacy-first on-device AI experiences using Google Gemma 4. The platform combines contextual AI guidance, live indoor navigation, SOS security systems, and real-time airport awareness into a fully offline-capable ecosystem where no personal passenger data leaves the device.",
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.17_AM_hwvxyg.jpg",
+      "github": "https://github.com/Powermind-Hackathon/ps3_LowBattery",
+      "demo": "",
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "MVI Architecture",
+        "Google Gemma 4",
+        "Google LiteRT",
+        "ML Kit",
+        "Room DB",
+        "Hilt DI",
+        "Android SensorManager",
+        "Bluetooth LE (BLE)",
+        "A* Pathfinding",
+        "WorkManager",
+        "AlarmManager",
+        "SpeechRecognizer",
+        "TextToSpeech",
+        "AirLabs API"
+      ],
+      "_dndId": "nvg6fgnqe",
+      "id": "skybuddy",
+      "spotlight": true,
+      "tag": "Hackathon Winner",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.17_AM_hwvxyg.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.17_AM_1_dbcmfw.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.18_AM_2_oirege.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.18_AM_1_ao5yit.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.18_AM_3_edm8di.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183791/WhatsApp_Image_2026-05-04_at_8.22.18_AM_w8i8j5.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778184842/WhatsApp_Image_2026-05-04_at_1.17.07_AM_kxpfme.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778184842/2_rteyf8.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778184842/WhatsApp_Image_2026-05-04_at_1.17.06_AM_ypmf6g.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778184843/WhatsApp_Image_2026-05-04_at_1.15.17_AM_psqbhy.jpg"
+      ],
+      "longDescription": "## What is SkyBuddy?\n\nSkyBuddy is an offline-first AI-powered airport companion ecosystem designed to improve the airport experience for passengers through intelligent navigation, proactive assistance, contextual AI guidance, and real-time airport awareness.\n\nUnlike traditional airport apps that depend heavily on cloud processing and internet connectivity, SkyBuddy runs a fine-tuned Google Gemma 4 AI model directly on-device, ensuring:\n- Low latency\n- Offline functionality\n- Privacy-first processing\n- Real-time contextual assistance\n- Zero cloud dependency for AI inference\n\nThe platform was developed as a multi-application ecosystem consisting of:\n- SkyBuddy — Passenger Assistant App\n- SkyBeacon — Smart BLE Broadcast System\n- SkySecurity — Airport Security Dashboard\n\nTogether, these applications create a connected airport intelligence system focused on passenger convenience, operational awareness, and privacy-safe AI experiences.\n\n---\n\n# 🎯 Core Purpose of the Platform\n\nThe primary goal of SkyBuddy is to solve major limitations found in existing airport companion systems:\n- Dependence on internet connectivity\n- Lack of indoor navigation intelligence\n- Static airport maps\n- Non-personalized user experiences\n- Cloud-based privacy risks\n- Poor real-time contextual guidance\n\nSkyBuddy solves these challenges by combining:\n- Offline AI inference\n- Indoor positioning systems\n- Real-time airport navigation\n- BLE-powered contextual alerts\n- AI-generated proactive assistance\n- Privacy-first architecture\n\nThe platform transforms airports into intelligent, context-aware environments where passengers receive assistance before even asking for help.\n\n---\n\n# ✨ Ecosystem Components Explained\n\n## 1. SkyBuddy — Passenger Companion App\n\nThis is the main user-facing application.\n\nPassengers can:\n- Enter flight numbers\n- Scan boarding passes\n- Access airport navigation\n- Receive AI-powered guidance\n- View live terminal maps\n- Get contextual travel assistance\n\nThe app adapts its behavior based on the passenger’s journey stage:\n- At home\n- At airport entrance\n- Near luggage area\n- At security checkpoints\n- Near boarding gate\n\nThe AI assistant provides:\n- Personalized airport guidance\n- Navigation help\n- Flight information\n- Food and shopping recommendations\n- Travel reminders\n- Pre-flight checklists\n\nAll responses are tailored using:\n- Flight details\n- Seat information\n- Journey phase\n- Indoor location data\n\n---\n\n## 2. SkyBeacon — Smart BLE Broadcast System\n\nSkyBeacon is the commercial and engagement layer of the ecosystem.\n\nAirport shops and vendors can:\n- Configure offers\n- Broadcast promotions using BLE beacons\n- Trigger location-aware notifications\n\nWhen passengers enter beacon range:\n- The passenger app intercepts the BLE signal\n- The AI generates contextual recommendations\n- Smart push notifications appear automatically\n\nExample:\n- Coffee discounts near the passenger\n- Nearby restaurant recommendations\n- Duty-free shopping alerts\n\nThis creates:\n- Contextual passenger engagement\n- Airport monetization opportunities\n- Hyperlocal recommendation systems\n\nwithout requiring internet connectivity.\n\n---\n\n## 3. SkySecurity — Airport Safety Dashboard\n\nSkySecurity is the operational safety module of the ecosystem.\n\nPassengers can trigger SOS alerts directly from the airport map when suspicious activity is noticed.\n\nSecurity officers receive:\n- Passenger location\n- Journey state\n- Terminal coordinates\n- Real-time alert information\n\nSecurity teams can:\n- Block unsafe zones\n- Trigger rerouting\n- Dismiss false alarms\n- Escalate emergencies\n\nBlocked zones automatically update on all passenger maps, and the navigation engine recalculates safer routes dynamically using A* pathfinding.\n\n---\n\n# 🧠 SkyPulse — Proactive AI Awareness Layer\n\nOne of the most advanced parts of SkyBuddy is SkyPulse, a proactive AI intelligence layer.\n\nUnlike standard chatbots that only respond after users ask questions, SkyPulse predicts user needs before interaction happens.\n\nThe system continuously analyzes:\n- Boarding countdowns\n- Indoor location changes\n- BLE beacon signals\n- Security checkpoint proximity\n- Route drift detection\n- User activity patterns\n- Navigation progress\n\nBased on these triggers, SkyPulse automatically surfaces:\n- Boarding reminders\n- Security instructions\n- Direction corrections\n- Nearby offers\n- Gate information\n- Operational alerts\n\nThis creates an anticipatory airport assistant experience.\n\n---\n\n# 🧠 AI Model & On-Device Intelligence\n\nSkyBuddy uses a fine-tuned version of Google Gemma 4 optimized specifically for airport environments.\n\nKey AI characteristics:\n- 26B total parameters\n- 4B active parameters\n- 4-bit quantization\n- On-device inference using Google LiteRT\n\nThe AI model handles:\n- Navigation assistance\n- Airport Q&A\n- Personalized recommendations\n- Flight guidance\n- Contextual alerts\n- Travel support conversations\n\nEvery AI prompt secretly includes:\n- Passenger coordinates\n- Journey phase\n- Flight context\n- Terminal state\n\nThis allows the assistant to provide highly contextual responses without exposing personal data externally.\n\n---\n\n# 📍 Indoor Navigation & Live Blue Dot System\n\nSkyBuddy includes a fully offline indoor navigation engine.\n\nThe platform combines:\n- Step detector sensors\n- Gyroscope fusion\n- Pedestrian Dead Reckoning (PDR)\n- A* shortest path algorithms\n\nto provide:\n- Real-time indoor positioning\n- Live Blue Dot tracking\n- Terminal navigation\n- Dynamic rerouting\n\nPassengers can navigate airport terminals similarly to outdoor GPS systems even without internet connectivity.\n\n---\n\n# 📸 Smart Computer Vision Features\n\nThe platform integrates ML Kit for computer vision capabilities.\n\n### Boarding Pass Scanner\nThe app scans:\n- PDF417 barcodes\n- Aztec boarding codes\n\nand automatically extracts:\n- Flight information\n- Timing details\n- Passenger context\n\n### Receipt Scanner\nUsers can scan receipts and the AI extracts:\n- Merchant name\n- Amount\n- Transaction details\n\n### Luggage AI\nPassengers can photograph luggage during baggage drop.\n\nThe AI:\n- Describes the bag\n- Saves luggage details\n- Stores timeline events\n- Helps users track belongings\n\n---\n\n# 🔐 Privacy & Security Architecture\n\nPrivacy is one of SkyBuddy’s strongest design principles.\n\nThe platform ensures:\n- No AI prompts leave the device\n- No cloud-based passenger profiling\n- No centralized personal data storage\n- Encrypted local database storage\n- Secure BLE validation\n- HTTPS-only outbound communication\n\nAll AI inference happens directly on-device, making the system:\n- DPDP compliant by architecture\n- Offline-capable\n- Privacy-safe\n- Low-latency\n\nThis creates a fundamentally different architecture compared to traditional cloud-based airport assistants.\n\n---\n\n# ⚙️ How the Platform Works Internally\n\n## Step 1 — Flight Data Ingestion\n\nPassengers:\n- Enter flight numbers\n- Scan boarding passes\n\nThe app retrieves flight information using AirLabs API.\n\n---\n\n## Step 2 — Journey State Initialization\n\nThe passenger selects their current journey stage:\n- Home\n- Entrance\n- Security\n- Gate\n- Luggage\n\nThis initializes personalized AI behavior.\n\n---\n\n## Step 3 — Indoor Navigation Processing\n\nSensor fusion combines:\n- Step detector\n- Rotation vectors\n- Gyroscope data\n\nto calculate indoor positioning and Blue Dot movement.\n\nThe navigation engine computes shortest routes using A* algorithms.\n\n---\n\n## Step 4 — AI Context Injection\n\nThe system injects:\n- User coordinates\n- Flight context\n- Journey phase\n- Nearby beacon data\n\ninto every AI prompt for contextual assistance.\n\n---\n\n## Step 5 — BLE Contextual Intelligence\n\nSkyBeacon continuously broadcasts BLE payloads.\n\nNearby passenger devices:\n- Detect beacon signals\n- Trigger AI-generated recommendations\n- Surface proactive notifications\n\nwithout user interaction.\n\n---\n\n## Step 6 — Security Monitoring\n\nSOS alerts instantly sync with SkySecurity dashboards.\n\nSecurity personnel can:\n- Block zones\n- Trigger rerouting\n- Escalate emergencies\n- Manage airport incidents\n\nin real time.\n\n---\n\n# 🚀 Platform Vision\n\nSkyBuddy aims to redefine airport experiences through:\n- Offline-first AI ecosystems\n- Privacy-preserving intelligence\n- Proactive passenger assistance\n- Intelligent airport infrastructure\n- Context-aware navigation systems\n\nThe long-term vision includes:\n- Multi-airport deployment\n- Smart airport mesh networks\n- Predictive passenger assistance\n- AI-powered operational optimization\n- Real-time airport digital twins\n\nThe platform demonstrates how edge AI, offline intelligence, and contextual systems can transform large public infrastructure environments into intelligent, user-aware ecosystems."
+    },
+    {
+      "title": "MindSettler",
+      "description": "MindSettler is an AI-powered mental wellness and psycho-education platform that combines ethical AI guidance, secure therapy booking, and wellness resources into one scalable ecosystem. Powered by Google Gemini AI, the platform achieved a 100/100 Lighthouse SEO score, ranked #1 on Google Search for “MindSettler”, and was indexed by Google AI Search Experience.",
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1778178695/1_soidms.png",
+      "github": "https://github.com/siddharth251206/Mindsettler_GWOC-26",
+      "demo": "https://mindsettler-bypb.vercel.app",
+      "tech": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Prisma ORM",
+        "Google Gemini AI",
+        "Firebase Authentication",
+        "Framer Motion",
+        "GSAP"
+      ],
+      "id": "mindsettler",
+      "_dndId": "qkeev4hvw",
+      "spotlight": true,
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778178695/1_soidms.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778178670/Screenshot_2026-05-07_235539_o1rw0k.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778178669/Screenshot_2026-05-07_235643_n1tqdc.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778178669/Screenshot_2026-05-07_235603_ccysgd.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778178669/Screenshot_2026-05-07_235700_nnmfom.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778178669/Screenshot_2026-05-07_235720_chrmre.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778180095/Screenshot_2026-05-08_002037_pcgqah.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778180096/Screenshot_2026-05-08_001838_neeovj.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778180095/Screenshot_2026-05-08_001926_nnhdjw.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778180096/Screenshot_2026-05-08_001906_zj87pj.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778180095/Screenshot_2026-05-08_002003_wwkjnr.png"
+      ],
+      "longDescription": "# 🧠 Detailed Description & Platform Explanation\n\n## What is MindSettler?\n\nMindSettler is a modern psycho-education and mental wellness platform designed to help users better understand their mental health, access professional therapy, and explore structured wellness resources in a safe digital environment.\n\nThe platform combines:\n- Artificial Intelligence\n- Mental wellness guidance\n- Therapy management systems\n- Secure authentication\n- Educational content delivery\n- Real-time communication tools\n\ninto a unified ecosystem focused on mental well-being and accessibility.\n\nUnlike traditional wellness applications that heavily rely on generic motivational chatbots, MindSettler is built around a “guidance-first” philosophy where AI acts as an assistant that helps users navigate their concerns and directs them toward appropriate professional support whenever necessary.\n\nThe platform supports:\n- Therapy discovery\n- Session booking\n- Mental health awareness\n- User-therapist coordination\n- Wellness guidance\n- Educational psycho-content\n- Safe AI-assisted interactions\n\nwhile maintaining strong privacy and security standards.\n\n---\n\n## 🎯 Core Purpose of the Platform\n\nThe primary goal of MindSettler is to make mental wellness support more approachable, structured, and accessible while maintaining ethical boundaries around AI usage.\n\nModern mental health platforms often suffer from several problems:\n- Overdependence on AI-generated therapy\n- Lack of trustworthy guidance\n- Weak privacy protections\n- Poor user engagement\n- Limited accessibility\n- Fragmented therapy booking systems\n\nMindSettler solves these challenges by:\n- Using AI only as a guidance and navigation layer\n- Encouraging professional therapist interaction\n- Providing secure session management\n- Delivering psycho-educational resources\n- Offering crisis-aware support systems\n- Building trust through privacy-focused architecture\n\nThe platform is designed to reduce hesitation and confusion users may experience while seeking mental wellness support online.\n\n---\n\n# ✨ Major Features Explained\n\n## 1. AI-Powered Wellness Companion\n\nOne of the core features of MindSettler is its intelligent AI companion powered by Google Gemini AI and Genkit.\n\nThe AI system is designed carefully with ethical limitations:\n- It does not diagnose users\n- It does not replace therapists\n- It does not provide clinical treatment\n\nInstead, it acts as:\n- A first-touch assistant\n- A conversation guide\n- A wellness navigator\n- A decision-support system\n\nThe AI analyzes:\n- User intent\n- Emotional tone\n- Conversational context\n- Repeated concerns\n\nBased on this analysis, it can:\n- Recommend psycho-education content\n- Suggest therapy booking\n- Guide users toward resources\n- Provide structured next steps\n- Detect emotional distress patterns\n\nThis creates a safer and more responsible AI-driven mental wellness experience.\n\n---\n\n## 2. Therapy Booking & Session Management System\n\nMindSettler includes a structured online and offline therapy session booking system.\n\nUsers can:\n- Browse therapy options\n- Select preferred slots\n- Schedule sessions\n- Receive confirmations\n- Join online meetings\n- Track session history\n\nThe platform integrates:\n- Google Meet\n- Google Calendar\n- Automated notifications\n\nto streamline therapist-client coordination.\n\nAdministrators and therapists can:\n- Approve bookings\n- Reschedule sessions\n- Manage availability\n- Handle client records securely\n\nThis transforms the platform from a simple wellness website into a complete therapy management ecosystem.\n\n---\n\n## 3. Psycho-Education & Awareness Modules\n\nMindSettler strongly emphasizes mental health literacy through educational content.\n\nThe platform provides:\n- Awareness articles\n- Coping strategies\n- Mental wellness guidance\n- Symptom education\n- Structured psycho-education modules\n\nThe frontend uses:\n- Framer Motion\n- GSAP animations\n\nto create a calm, engaging, and non-overwhelming user experience while consuming sensitive wellness-related information.\n\nThe educational system is designed to help users:\n- Understand emotions\n- Learn coping mechanisms\n- Recognize patterns\n- Become more informed about mental wellness\n\nwithout replacing actual therapy.\n\n---\n\n## 4. Crisis-Aware AI Safety System\n\nOne of the most important aspects of the platform is its safety-first AI design.\n\nThe AI continuously monitors conversations for:\n- Self-harm indicators\n- Emotional distress\n- Crisis situations\n- Severe anxiety patterns\n\nWhen risk indicators are detected, the platform:\n- Avoids unsafe AI responses\n- Surfaces professional helpline resources\n- Encourages therapist intervention\n- Guides users toward proper support channels\n\nThis creates a more ethical and responsible AI-assisted environment.\n\n---\n\n## 5. Enterprise-Grade Security & Privacy\n\nMindSettler is built with strong emphasis on user trust and data protection.\n\nThe platform uses:\n- Firebase Authentication\n- JWT verification\n- Helmet security headers\n- Rate limiting\n- Strict CORS policies\n- Role-Based Access Control (RBAC)\n\nThe system separates permissions between:\n- Users\n- Therapists\n- Administrators\n\nensuring sensitive data remains protected and accessible only to authorized individuals.\n\nAdditionally, Abstract API integration helps block disposable and fake email registrations to reduce spam and abuse.\n\n---\n\n## 6. Responsive Modern Frontend Experience\n\nThe platform frontend is developed using Next.js 16 with App Router architecture.\n\nThe UI focuses on:\n- Accessibility\n- Performance\n- Smooth navigation\n- Mobile responsiveness\n- Calm visual aesthetics\n\nTailwind CSS, Radix UI, Framer Motion, and GSAP are used together to deliver:\n- Smooth animations\n- Interactive components\n- Responsive layouts\n- Modern transitions\n- Application-like experience\n\nThis helps improve engagement while maintaining a comfortable and distraction-free interface.\n\n---\n\n## 7. Performance & SEO Optimization\n\nMindSettler is designed with strong focus on discoverability and real-world performance.\n\nKey achievements include:\n- 100/100 Google Lighthouse SEO score\n- High click-through rate (CTR)\n- Strong organic search visibility\n- Google AI indexing support\n- Fast server-side rendering performance\n\nThe platform uses:\n- Semantic architecture\n- Metadata optimization\n- Server-side rendering\n- Optimized routing\n\nto maximize accessibility and visibility across search engines.\n\n---\n\n# ⚙️ How the Platform Works Internally\n\n## Step 1 — User Authentication\n\nUsers securely sign in using Firebase Authentication with protected JWT-based sessions.\n\nThe backend verifies authentication tokens and assigns access permissions based on user roles.\n\n---\n\n## Step 2 — AI Interaction Layer\n\nUsers interact with the AI wellness companion.\n\nGoogle Gemini AI processes:\n- User intent\n- Context\n- Emotional patterns\n- Conversation history\n\nand provides guided responses while maintaining ethical AI limitations.\n\n---\n\n## Step 3 — Therapy Booking Workflow\n\nUsers can select therapy sessions and preferred time slots.\n\nThe backend:\n- Stores booking information\n- Notifies administrators\n- Handles session approvals\n- Generates scheduling workflows\n\nusing Express.js and PostgreSQL.\n\n---\n\n## Step 4 — Session Coordination\n\nApproved sessions integrate with:\n- Google Meet\n- Google Calendar\n- Email notification services\n\nto automate communication and scheduling processes.\n\n---\n\n## Step 5 — Data Security & Access Control\n\nAll sensitive operations pass through:\n- Authentication middleware\n- Role verification systems\n- Security validation layers\n\nensuring protected access and secure data handling.\n\n---\n\n## Step 6 — Educational Content Delivery\n\nThe frontend dynamically delivers psycho-education modules, awareness resources, and wellness guidance through optimized rendering and interactive UI systems.\n\nThis creates a seamless user experience across mobile, tablet, and desktop devices.",
+      "tag": "Indexed on Google"
+    },
+    {
+      "title": "Content Flow Studio",
+      "description": "ContentFlow Studio is an AI-powered content creation platform that helps users generate blogs, social media posts, emails, and branded content using advanced AI, RAG (Retrieval-Augmented Generation), and real-time analytics. It combines Google Gemini 2.5, LangChain, Pinecone, and Firebase to deliver personalized, SEO-friendly, and context-aware content generation in seconds.",
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1778177089/1_uz0m52.jpg",
+      "github": "https://github.com/siddharth251206/GenAI-Content-Creation",
+      "demo": "https://contentflow-genai.vercel.app",
+      "tech": [
+        "Next.js",
+        "Tailwind CSS",
+        "CKEditor",
+        "FastAPI",
+        "LangChain",
+        "Google Gemini 2.5 Flash",
+        "Firebase Authentication",
+        "Firebase Firestore",
+        "Pinecone"
+      ],
+      "_dndId": "3cew9pf63",
+      "id": "contentflow",
+      "tag": "Finalist Project",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778177089/1_uz0m52.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778177088/2_zcp6ar.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778177089/3_fsladg.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778177089/4_cvzk6f.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778177089/5_frvhfn.jpg"
+      ],
+      "longDescription": "## What is ContentFlow Studio?\n\nContentFlow Studio is a next-generation intelligent writing suite designed for creators, marketers, startups, students, and businesses who want high-quality content without spending hours writing manually.\n\nUnlike traditional AI writing tools that generate generic text, ContentFlow Studio creates personalized, context-aware, and brand-specific content by combining:\n\n- Generative AI\n- RAG (Retrieval-Augmented Generation)\n- Custom Brand Voice Training\n- Real-Time Analytics\n- Rich Text Editing\n- Knowledge-Based Content Generation\n\nThe platform allows users to upload their own company documents, PDFs, notes, or datasets so the AI can generate highly accurate and domain-specific content instead of hallucinating generic answers. \n\n---\n\n## Core Purpose of the Platform\n\nThe main goal of ContentFlow Studio is to solve a major problem with modern AI writing tools:\n\n> Most AI tools sound robotic, generic, and disconnected from a company’s actual knowledge or writing style.\n\nContentFlow Studio fixes this by:\n\n- Learning from user-uploaded documents\n- Mimicking writing styles and brand voice\n- Generating SEO-friendly content\n- Providing readability and sentiment analytics\n- Giving users full editing and export capabilities\n\nIt acts like a combination of:\n\n- ChatGPT\n- Notion AI\n- Grammarly\n- Jasper AI\n- SEO optimization tools\n- Brand voice trainers\n\n—all inside one ecosystem.\n\n---\n\n## Major Features Explained\n\n### 1. AI-Powered Content Generation\nThe platform uses Google Gemini 2.5 Flash integrated through LangChain to generate content rapidly and accurately. Users can create:\n\n- Blog posts\n- Marketing content\n- Emails\n- Product descriptions\n- Social media captions\n- Documentation\n- Articles\n\nThe AI understands:\n- Topic\n- Audience\n- Tone\n- Writing style\n- Context from uploaded documents\n\nThis makes generated content feel natural and highly relevant. \n\n### 2. Retrieval-Augmented Generation (RAG)\nThis is the most powerful part of the platform. Instead of relying only on pretrained AI knowledge, the system allows users to upload:\n\n- PDFs\n- Text documents\n- Company documentation\n- Knowledge bases\n\nThe backend:\n1. Extracts text from documents\n2. Splits it into chunks\n3. Converts them into embeddings\n4. Stores them in Pinecone\n\nWhen a user asks for content, the platform searches the most relevant chunks, injects them into the AI prompt, and grounds the response with factual company-specific information. This dramatically reduces hallucinations and improves factual accuracy. \n\n### 3. Custom Brand Voice Mimicking\nOne of the coolest features. Users can paste their own writing samples, brand guidelines, or persona styles. The system analyzes:\n\n- Vocabulary\n- Tone\n- Sentence structure\n- Writing patterns\n\nThen the AI mimics that exact communication style. Example:\n- Professional corporate tone\n- Casual Gen-Z style\n- Pirate speech\n- Technical documentation tone\n\nThis makes the generated content feel human and consistent with the user’s identity. \n\n### 4. Smart Analytics Dashboard\nBefore showing generated content to users, the platform performs real-time analytics.\n\n**Readability Analysis**\nUsing TextStat, the platform calculates Flesch Reading Ease, Difficulty level, and Reading complexity. This helps writers target Students, Professionals, or General audiences.\n\n**Sentiment Analysis**\nUsing TextBlob, the system detects Positive sentiment, Neutral sentiment, and Negative sentiment. Useful for Marketing, Branding, and Emotional engagement.\n\n**SEO Metrics**\nThe platform automatically calculates Word count, Estimated reading time, and SEO friendliness. This transforms the platform from a simple AI writer into a complete content optimization suite. \n\n### 5. Professional Editing System\nThe frontend integrates CKEditor 5, giving users a full rich-text editing environment. Users can:\n\n- Format text\n- Add headings\n- Insert lists\n- Edit generated content professionally\n\nThe platform also includes AI-powered rewrite tools, Expand selected text, Make text funnier, and Smart regeneration features. This creates a workflow similar to professional editorial software. \n\n### 6. Stock Image Integration\nThe platform connects with stock image services like:\n- Pexels\n- Unsplash\n\nUsers can search and insert relevant images directly into their content editor without leaving the platform. \n\n### 7. Auto-Save & Export System\nGenerated content is automatically stored in Firebase Firestore. Users can View history, Restore previous drafts, and Access analytics of older content. \n\nExport options include:\n- PDF\n- DOCX\n- HTML\n\nThis makes the platform practical for professional publishing workflows. \n\n---\n\n## How the Platform Works Internally\n\n**Step 1 — Upload Knowledge**\nUsers upload PDFs or text files. The backend extracts text using PyPDF, splits content into chunks, converts chunks into vector embeddings, and stores them in Pinecone.\n\n**Step 2 — Retrieve Relevant Context**\nWhen a user enters a topic, Pinecone performs a semantic vector search, retrieves the most relevant information, and sends it back as contextual knowledge.\n\n**Step 3 — Prompt Engineering**\nThe system combines the User topic, Tone, Audience, Retrieved context, and Brand voice instructions into a structured AI prompt using LangChain.\n\n**Step 4 — AI Content Generation**\nThe prompt is sent to Google Gemini 2.5 Flash. The AI generates context-aware, personalized, and structured content.\n\n**Step 5 — Analytics Processing**\nThe generated content passes through TextStat, TextBlob, and Custom SEO calculations before being delivered.\n\n**Step 6 — Storage & Delivery**\nFinal content and analytics are displayed on the frontend, stored securely in Firestore, and added to history for future access.\n"
+    },
+    {
+      "id": "cricarena",
+      "title": "CRICARENA",
+      "description": "CRICARENA is a competitive cricket quiz platform featuring dynamic quizzes, user profiles, achievements, and a real-time leaderboard — built to make cricket knowledge fun and interactive.",
+      "longDescription": "## What is CricArena?\n\nCricArena is an all-in-one cricket platform designed to provide cricket fans with a complete digital ecosystem for live updates, match analysis, interactive learning, and community engagement.\n\nThe platform combines:\n- Real-time cricket updates\n- Interactive quizzes\n- Match analysis\n- Cricket tactics education\n- Player comparison systems\n- Community blogging\n- Historical archives\n\ninto one centralized platform for cricket enthusiasts.\n\nUnlike traditional cricket score websites that focus only on match updates, CricArena aims to create a more immersive cricket experience by blending information, interaction, learning, and entertainment together.\n\nThe platform is designed for:\n- Casual cricket fans\n- Competitive cricket followers\n- IPL enthusiasts\n- Fantasy cricket audiences\n- Students learning cricket tactics\n- Users interested in cricket history and analysis\n\n---\n\n## 🎯 Core Purpose of the Platform\n\nThe primary goal of CricArena is to create a complete cricket companion platform where users can not only follow matches but also actively engage with cricket through quizzes, tactical learning, discussions, and player analytics.\n\nMost cricket platforms focus only on:\n- Live scores\n- News articles\n- Match schedules\n\nCricArena expands beyond this by adding:\n- Interactive cricket quizzes\n- Tactical visual learning\n- Community blogging\n- Historical match archives\n- Player comparison systems\n- Cricket education modules\n\nThe platform focuses on improving user engagement while making cricket knowledge more interactive and accessible.\n\n---\n\n# ✨ Major Features Explained\n\n## 1. Live Cricket Score & Match Updates\n\nCricArena provides live cricket scores along with:\n- Ball-by-ball commentary\n- Match statistics\n- Instant score updates\n- Match progress tracking\n\nThis allows users to stay connected with ongoing matches in real time.\n\nThe live score system is designed to deliver:\n- Fast updates\n- Easy readability\n- Smooth user experience\n- Match insights for viewers\n\n---\n\n## 2. Cricket Match Archive System\n\nThe platform contains a dedicated archive section where users can revisit:\n- Historic cricket moments\n- IPL finals highlights\n- Memorable matches\n- Legendary cricket performances\n\nThis feature helps preserve iconic cricket memories and allows users to relive important moments from cricket history.\n\n---\n\n## 3. Interactive Cricket Quiz System\n\nOne of the most engaging parts of CricArena is its cricket quiz module.\n\nUsers can:\n- Attempt cricket quizzes\n- Test cricket knowledge\n- Challenge themselves with different difficulty levels\n- Improve cricket awareness\n\nThe quiz system transforms the platform from a passive content website into an interactive learning experience.\n\n---\n\n## 4. Cricket Tactics & Visual Learning\n\nCricArena includes tactical cricket learning modules focused on:\n- Field placements\n- Batting strategies\n- Bowling tactics\n- Match awareness\n\nThe platform uses visual explanations and structured guides to help users better understand cricket strategies and decision-making.\n\nThis feature is especially useful for:\n- Beginners learning cricket\n- Fantasy cricket users\n- Students interested in tactical analysis\n\n---\n\n## 5. Player Comparison System\n\nThe player comparison feature allows users to compare cricket players side-by-side using:\n- Statistics\n- Performance metrics\n- Match records\n- Career analysis\n\nThis helps users gain deeper insights into player performances and cricket analytics.\n\n---\n\n## 6. Cricket News & Content Hub\n\nCricArena provides a dedicated news section containing:\n- Match reports\n- Cricket news\n- Tournament updates\n- Trending cricket stories\n\nThis helps users stay updated with ongoing developments in the cricket world.\n\n---\n\n## 7. Community Blog & Discussion Platform\n\nThe platform includes a blog and discussion section where users can:\n- Share opinions\n- Post match thoughts\n- Discuss cricket events\n- Interact with other cricket fans\n\nThis creates a stronger community-driven experience around cricket discussions and engagement.\n\n---\n\n## 8. Interactive Match Calendar\n\nCricArena provides an interactive cricket calendar showcasing:\n- Upcoming matches\n- Tournament schedules\n- Match timings\n- Event tracking\n\nThis helps users stay informed about future cricket fixtures and important tournaments.\n\n---\n\n## 9. Cricket Stadium Exploration\n\nThe platform also includes a dedicated stadium section featuring:\n- Major cricket stadiums in India\n- Stadium visuals\n- Stadium details\n- Cricket venue information\n\nThis adds an educational and exploratory aspect to the platform.\n\n---\n\n# ⚙️ How the Platform Works Internally\n\n## Step 1 — Frontend User Interface\n\nThe frontend is built using:\n- HTML\n- CSS\n- JavaScript\n- ReactJS\n\nThe interface focuses on:\n- Smooth navigation\n- Interactive layouts\n- Responsive design\n- Cricket-themed UI experience\n\nUsers can browse different sections including:\n- Live scores\n- Quizzes\n- Blogs\n- Archives\n- Tactics\n- Match schedules\n\n---\n\n## Step 2 — Backend Processing\n\nThe backend is powered by Django using Python.\n\nThe backend handles:\n- API integration\n- Dynamic content rendering\n- Quiz management\n- User interactions\n- Match data processing\n- Database communication\n\nDjango provides:\n- Structured architecture\n- Scalability\n- Secure request handling\n- Efficient content management\n\n---\n\n## Step 3 — Database Management\n\nCricArena uses SQLite for database management.\n\nThe database stores:\n- Quiz data\n- Blog content\n- Match-related information\n- User-generated content\n- Cricket statistics\n\nThis ensures organized and efficient data retrieval across the platform.\n\n---\n\n## Step 4 — Dynamic Cricket Content Delivery\n\nThe platform dynamically updates:\n- Match information\n- Cricket news\n- Player statistics\n- Tournament schedules\n\nto ensure users receive fresh and relevant cricket content.\n\n---\n\n## Step 5 — Community Interaction & Engagement\n\nThe blog and discussion modules enable users to:\n- Participate in conversations\n- Share opinions\n- Engage in cricket discussions\n- Build community interaction\n\nThis increases user engagement and platform activity.\n\n---\n\n# 🚀 Platform Vision\n\nCricArena is designed to evolve beyond a traditional cricket website into a complete cricket engagement ecosystem.\n\nThe long-term vision of the platform includes:\n- Advanced analytics\n- AI-powered cricket insights\n- Fantasy cricket integrations\n- Personalized user dashboards\n- Real-time notifications\n- Interactive cricket learning systems\n\nThe platform aims to combine sports information, tactical education, entertainment, and community interaction into one modern cricket-focused digital experience.",
+      "tech": [
+        "Django",
+        "React",
+        "HTML",
+        "CSS",
+        "Javascript",
+        "PostgresSQL",
+        "NeonDB",
+        "Framer motion"
+      ],
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1765046126/Screenshot_2025-12-07_000034_bxdi1b.png",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1765046126/Screenshot_2025-12-07_000034_bxdi1b.png",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183101/3_kngshf.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183101/4_fn7qs0.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183101/8_ppfd7y.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183101/5_pbok7k.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183102/6_wamk0q.jpg",
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1778183102/7_gmtpot.jpg"
+      ],
+      "github": "https://github.com/siddharth251206/cricarena",
+      "demo": "https://cricarena-app.onrender.com/",
+      "spotlight": false,
+      "tag": "Featured Project",
+      "_dndId": "6i4cy745a"
+    },
+    {
+      "id": "citybiz-directory",
+      "title": "CityBiz Directory",
+      "description": "CityBiz is a full-stack business directory where users can browse, search, and filter local businesses through a clean, responsive UI. With a real database and backend powering listings and categories, it delivers a smooth, scalable experience end-to-end.",
+      "longDescription": "A comprehensive directory for local businesses, CityBiz allows users to easily find, filter, and review services in their area. Designed with a mobile-first approach, the platform uses Node.js and Express to securely handle data operations and Supabase for real-time PostgresSQL database storage.",
+      "tech": [
+        "Node.js",
+        "Express.js",
+        "HTML",
+        "CSS",
+        "Javascript",
+        "Supabase",
+        "PostgresSQL"
+      ],
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1765047317/Screenshot_2025-12-07_002445_tiewpn.png",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1765047317/Screenshot_2025-12-07_002445_tiewpn.png"
+      ],
+      "github": "https://github.com/siddharth251206/CityBiz-Directory",
+      "demo": "#",
+      "spotlight": false,
+      "tag": "",
+      "_dndId": "zz9b5b1g3"
+    },
+    {
+      "id": "my-portfolio",
+      "title": "My Portfolio",
+      "description": "A modern, responsive personal portfolio built to showcase my projects, skills, and work — with smooth animations, clean UI, and a focus on clarity and performance.",
+      "longDescription": "This portfolio itself is a testament to my love for clean design and smooth user experiences. Built with React, Vite, and Framer Motion, it features dynamic routing, glassmorphism UI components, and a custom-built local CMS dashboard that allows me to update content securely without modifying code.",
+      "tech": [
+        "React+Vite",
+        "TailwindCSS",
+        "Framer Motion",
+        "Lucide-react"
+      ],
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1765047785/Screenshot_2025-12-07_003250_qmpxdl.png",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1765047785/Screenshot_2025-12-07_003250_qmpxdl.png"
+      ],
+      "github": "https://github.com/siddharth251206/portfolio",
+      "demo": "https://siddharth-sheth.vercel.app/",
+      "spotlight": false,
+      "tag": "",
+      "_dndId": "49ufmbbde"
+    },
+    {
+      "id": "mangrosafe",
+      "title": "MangroSafe",
+      "description": "A smart monitoring system that analyzes mangrove health and flags risks using data-driven insights.",
+      "longDescription": "Developed during Hackout 2025, MangroSafe utilizes machine learning models built with TensorFlow to analyze aerial imagery of mangrove forests. The system automatically detects areas of deforestation or disease, providing critical insights to conservationists through a Django-powered dashboard.",
+      "tech": [
+        "Django",
+        "TensorFlow",
+        "Clerk API",
+        "HTML",
+        "CSS",
+        "Javascript"
+      ],
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1765048034/1757239329382_pjcssn.jpg",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1765048034/1757239329382_pjcssn.jpg"
+      ],
+      "github": "https://github.com/Pratham722007/Hackout-25",
+      "demo": "#",
+      "spotlight": false,
+      "tag": "First Hackathon Project",
+      "_dndId": "ap9sbv41o"
+    },
+    {
+      "id": "traffic-simulator",
+      "title": "Traffic-Simulator",
+      "description": "A visual traffic simulation that models vehicle flow and congestion using rule-based movement.",
+      "longDescription": "A robust C++ application using the SFML graphics library to visualize complex traffic patterns. This project implements advanced pathfinding algorithms and rule-based entity movement to accurately model urban congestion, helping to visualize the impact of intersection delays.",
+      "tech": [
+        "C++",
+        "Cmake",
+        "SFML",
+        "Ninja",
+        "Algorithms"
+      ],
+      "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1765048445/Screenshot_2025-12-07_004337_zkfoma.png",
+      "gallery": [
+        "https://res.cloudinary.com/djqtmil10/image/upload/v1765048445/Screenshot_2025-12-07_004337_zkfoma.png"
+      ],
+      "github": "https://github.com/siddharth251206/TrafficSimulation-Project",
+      "demo": "#",
+      "spotlight": false,
+      "tag": "",
+      "_dndId": "vgdwl0a1l"
+    }
+  ]
+}

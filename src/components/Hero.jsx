@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { motion} from "framer-motion";
 import  FloatingParticle  from "../components/FloatingParticle"
 import SectionParticles from "./SectionParticles";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Hero() {
+  const { portfolioData } = usePortfolio();
+  const { hero } = portfolioData;
   const [showHello, setShowHello] = useState(true);
   const [shiftImage, setShiftImage] = useState(false);
   const [showText, setShowText] = useState(false);
@@ -87,12 +90,12 @@ const drop = {
 
             {/* LINE 1 */}
             <motion.span className="inline-block">
-              {"Hi, I'm Siddharth Sheth,".split(" ").map((word, i) => (
+              {hero.greeting.split(" ").map((word, i) => (
                 <motion.span
                   key={i}
                   variants={drop}
                   className={`inline-block mr-2 ${
-                    word === "Siddharth" ? "text-[hsl(var(--accent))]" : ""
+                    word.includes("Siddharth") ? "text-[hsl(var(--accent))]" : ""
                   }`}
                 >
                   {word}
@@ -103,7 +106,7 @@ const drop = {
 
             {/* LINE 2 */}
             <motion.span className="inline-block mt-2">
-              {"a CSE undergrad from SVNIT, learning, building, evolving.".split(" ").map((word, i) => (
+              {hero.headline.split(" ").map((word, i) => (
                 <motion.span
                   key={i}
                   variants={drop}
@@ -126,8 +129,7 @@ const drop = {
             `}
             variants={drop}
           >
-            I enjoy taking ideas from sketches to screens.
-Web dev, DSA, design systems, clean UX — all the stuff that makes a product feel alive.
+            {hero.bio}
           </motion.p>
 
           {/* BUTTONS */}

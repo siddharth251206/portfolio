@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @font-face {
   font-family: 'EasterEgg';
@@ -15,15 +16,8 @@
  ::-webkit-scrollbar {
   display: none;
 } 
-html {
-  cursor: none !important;
+ html {
   scroll-behavior: smooth;
-}
-
-@media (max-width: 768px) {
-  html {
-    cursor: auto !important;
-  }
 }
 
 @theme {

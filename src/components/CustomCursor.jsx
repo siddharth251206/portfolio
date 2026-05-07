@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 export default function CustomCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hovering, setHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -13,9 +15,16 @@ export default function CustomCursor() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    if (isMobile) {
-      return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile || location.pathname.startsWith("/admin")) {
+      document.documentElement.style.setProperty('cursor', 'auto', 'important');
+      return;
     }
+
+    document.documentElement.style.setProperty('cursor', 'none', 'important');
 
     const move = (e) => {
       setPos({ x: e.clientX, y: e.clientY });
@@ -25,20 +34,27 @@ export default function CustomCursor() {
       "button, a, .card, .hover-target"
     );
 
+    const handleMouseEnter = () => setHovering(true);
+    const handleMouseLeave = () => setHovering(false);
+
     hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => setHovering(true));
-      el.addEventListener("mouseleave", () => setHovering(false));
+      el.addEventListener("mouseenter", handleMouseEnter);
+      el.addEventListener("mouseleave", handleMouseLeave);
     });
 
     window.addEventListener("mousemove", move);
     
     return () => {
       window.removeEventListener("mousemove", move);
-      window.removeEventListener('resize', checkMobile);
+      hoverElements.forEach((el) => {
+        el.removeEventListener("mouseenter", handleMouseEnter);
+        el.removeEventListener("mouseleave", handleMouseLeave);
+      });
+      document.documentElement.style.setProperty('cursor', 'auto', 'important');
     };
-  }, [isMobile]);
+  }, [isMobile, location.pathname]);
 
-  if (isMobile) {
+  if (isMobile || location.pathname.startsWith("/admin")) {
     return null;
   }
 

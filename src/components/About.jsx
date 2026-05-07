@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { sectionReveal, staggerChildren, itemReveal } from "../animations/reveal";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export default function About() {
+  const { portfolioData } = usePortfolio();
+  const { about } = portfolioData;
   return (
     <motion.section
       variants={sectionReveal}
@@ -49,100 +52,51 @@ export default function About() {
           "
         >
 
-          {/* FLOATING TAGS - Hidden on very small screens, adjusted positions */}
-          <motion.div 
-            variants={itemReveal} 
-            className="hidden sm:block absolute -top-4 sm:-top-6 left-4 sm:left-6"
-          >
-            <div className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 
-              border border-white/30 backdrop-blur-xl 
-              text-xs sm:text-sm font-semibold animate-bounce">
-              CSE @ SVNIT
-            </div>
-          </motion.div>
+          {/* FLOATING TAGS - Dynamic */}
+          {about.tags.map((tag, i) => {
+            const positions = [
+              "hidden sm:block absolute -top-4 sm:-top-6 left-4 sm:left-6",
+              "hidden md:block absolute top-8 sm:top-12 -right-4 sm:-right-6",
+              "hidden lg:block absolute bottom-10 -left-26",
+              "hidden sm:block absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2",
+              "hidden lg:block absolute top-1/3 -left-26",
+              "hidden lg:block absolute bottom-1/4 -right-26"
+            ];
+            const animations = [
+              "animate-bounce",
+              "animate-floating",
+              "animate-floating-delayed",
+              "animate-floating",
+              "animate-floating-delayed",
+              "animate-floating-slower"
+            ];
+            
+            // fallback if more tags than positions defined
+            const pos = positions[i % positions.length];
+            const anim = animations[i % animations.length];
 
-          <motion.div 
-            variants={itemReveal} 
-            className="hidden md:block absolute top-8 sm:top-12 -right-4 sm:-right-6"
-          >
-            <div className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 
-              border border-white/30 backdrop-blur-xl 
-              text-xs sm:text-sm font-semibold animate-floating">
-              Developer
-            </div>
-          </motion.div>
-
-          <motion.div 
-            variants={itemReveal} 
-            className="hidden lg:block absolute bottom-10 -left-26"
-          >
-            <div className="px-5 py-2 rounded-full bg-white/20 
-              border border-white/30 backdrop-blur-xl 
-              text-sm font-semibold animate-floating-delayed">
-              UI/UX Designer
-            </div>
-          </motion.div>
-
-          <motion.div 
-            variants={itemReveal} 
-            className="hidden sm:block absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2"
-          >
-            <div className="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 
-              border border-white/30 backdrop-blur-xl 
-              text-xs sm:text-sm font-semibold animate-floating">
-              Passionate
-            </div>
-          </motion.div>
-
-          <motion.div 
-            variants={itemReveal} 
-            className="hidden lg:block absolute top-1/3 -left-26"
-          >
-            <div className="px-5 py-2 rounded-full bg-white/20 
-              border border-white/30 backdrop-blur-xl 
-              text-sm font-semibold animate-floating-delayed">
-              Learner
-            </div>
-          </motion.div>
-
-          <motion.div 
-            variants={itemReveal} 
-            className="hidden lg:block absolute bottom-1/4 -right-26"
-          >
-            <div className="px-5 py-2 rounded-full bg-white/20 
-              border border-white/30 backdrop-blur-xl 
-              text-sm font-semibold animate-floating-slower">
-              Competitive Programmer
-            </div>
-          </motion.div>
+            return (
+              <motion.div key={i} variants={itemReveal} className={pos}>
+                <div className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 border border-white/30 backdrop-blur-xl text-xs sm:text-sm font-semibold ${anim}`}>
+                  {tag}
+                </div>
+              </motion.div>
+            );
+          })}
 
           {/* BIO TEXT */}
           <motion.div 
             variants={staggerChildren} 
             className="leading-relaxed text-base sm:text-lg lg:text-xl space-y-4 sm:space-y-6"
           >
-
-            <motion.p variants={itemReveal}>
-              I'm Siddharth — a Computer Science undergrad at SVNIT, 
-              driven by design, creativity and the thrill of making ideas real.
-            </motion.p>
-
-            <motion.p variants={itemReveal}>
-              I love blending clean UI, smooth motion, and solid engineering 
-              to craft digital experiences that feel effortless. 
-              Whether I'm polishing a frontend interaction or optimizing backend logic, 
-              I want everything I build to feel *intentional*.
-            </motion.p>
-
-            <motion.p variants={itemReveal}>
-              Beyond code, I'm a learner at heart — constantly exploring,
-              experimenting, and pushing myself to design things that 
-              not only work well, but look damn good while doing it.
-            </motion.p>
-
+            {about.paragraphs.map((para, i) => (
+              <motion.p key={i} variants={itemReveal}>
+                {para}
+              </motion.p>
+            ))}
           </motion.div>
 
-         {/* ACHIEVEMENTS BLOCK */}
+         {/* ACHIEVEMENTS BLOCK — resume-style timeline */}
 <motion.div 
   variants={staggerChildren}
   className="
@@ -154,25 +108,80 @@ export default function About() {
 >
   <motion.h3 
     variants={itemReveal}
-    className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-[hsl(var(--accent))]"
+    className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-[hsl(var(--accent))]"
   >
     Achievements
   </motion.h3>
 
-  <div className="space-y-3 sm:space-y-4 text-base sm:text-lg leading-relaxed">
+  <div className="relative">
+    {/* Vertical timeline line */}
+    <div className="absolute left-[22px] top-2 bottom-2 w-[2px] bg-[hsl(var(--accent))/0.2] rounded-full hidden sm:block" />
 
-    <motion.p variants={itemReveal}>
-      • Selected in the <span className="font-semibold">Internal Hackathon Round</span> of Smart India Hackathon 2025 (SIH).
-    </motion.p>
+    <div className="space-y-8">
+      {[...about.achievements]
+        .sort((a, b) => {
+          if (typeof a !== 'object' || typeof b !== 'object') return 0;
+          const yearA = parseInt(a.date) || 0;
+          const yearB = parseInt(b.date) || 0;
+          if (yearA !== yearB) return yearB - yearA;
+          const monthA = parseInt(a.month) || 0;
+          const monthB = parseInt(b.month) || 0;
+          return monthB - monthA;
+        })
+        .map((ach, i) => {
+          const isObj = typeof ach === 'object';
+          
+          const getMonthName = (monthNum) => {
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const m = parseInt(monthNum);
+            if (m >= 1 && m <= 12) return months[m - 1];
+            return "";
+          };
+          
+          const monthName = isObj ? getMonthName(ach.month) : "";
+          const displayDate = isObj ? `${monthName ? monthName + ' ' : ''}${ach.date}` : '—';
+          // Short date for the circular badge
+          const badgeDate = isObj ? ach.date : '—';
+          
+          return (
+            <motion.div key={i} variants={itemReveal} className="flex gap-4 sm:gap-6 items-start">
+              {/* Timeline dot */}
+              <div className="relative flex-shrink-0 hidden sm:flex flex-col items-center mt-1">
+                <div className="w-[46px] h-[46px] rounded-full bg-[hsl(var(--accent))/0.15] border-2 border-[hsl(var(--accent))/0.4] flex items-center justify-center z-10 flex-col">
+                  {monthName && <span className="text-[8px] font-bold text-[hsl(var(--accent))] uppercase tracking-widest leading-none mb-0.5">{monthName}</span>}
+                  <span className="text-[10px] font-black text-[hsl(var(--accent))] tracking-wider leading-none">
+                    {badgeDate}
+                  </span>
+                </div>
+              </div>
 
-    <motion.p variants={itemReveal}>
-      • <span className="font-semibold">Finalist</span> — Web Wonders (Team DOMinators).
-    </motion.p>
-
-    <motion.p variants={itemReveal}>
-      • <span className="font-semibold">Top 30 Finalist</span> in the ACM Summer Coding Challenge 2025, SVNIT.
-    </motion.p>
-
+              {/* Content */}
+              <div className="flex-1 pb-2">
+                {isObj ? (
+                  <>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))]">
+                        {ach.label}
+                      </span>
+                      <span className="text-xs text-[hsl(var(--muted-foreground))] font-medium sm:hidden">{displayDate}</span>
+                    </div>
+                    <p className="font-bold text-base sm:text-lg text-[hsl(var(--foreground))] leading-snug mb-1">
+                      {ach.title}
+                    </p>
+                    {ach.description && (
+                      <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
+                        {ach.description}
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <p className="text-base sm:text-lg leading-relaxed text-[hsl(var(--foreground))]">• {ach}</p>
+                )}
+              </div>
+            </motion.div>
+          );
+      })}
+    </div>
   </div>
 </motion.div>
 
