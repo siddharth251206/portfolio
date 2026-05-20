@@ -1,0 +1,96 @@
+/* ══════════════════════════════════════════════════════
+   CUSTOM CURSOR — Clean, minimal, no-glitch
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --cursor-color: #00A8E8;
+  --cursor-color-rgb: 0, 168, 232;
+}
+
+/* Hide native cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  html:not([data-cursor-off]) *:not(input):not(textarea):not(select),
+  html:not([data-cursor-off]) *:not(input):not(textarea):not(select)::before,
+  html:not([data-cursor-off]) *:not(input):not(textarea):not(select)::after {
+    cursor: none !important;
+  }
+}
+
+/* No custom cursor on touch */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ── Dot ── white + difference = always visible on any background */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+
+/* ── Ring ── white border + difference = always contrasts */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  z-index: 99998;
+  will-change: transform;
+  mix-blend-mode: difference;
+  transition:
+    width 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    height 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    opacity 0.2s ease;
+}
+
+/* ── Hover state (universal) ── */
+.cursor-ring.is-hovering {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cursor-dot.is-hovering {
+  opacity: 0.6;
+}
+
+/* ── Click ripple ── */
+@keyframes ripple-out {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+.cursor-click-ripple {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(var(--cursor-color-rgb), 0.4);
+  pointer-events: none;
+  z-index: 99997;
+  animation: ripple-out 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

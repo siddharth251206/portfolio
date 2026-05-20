@@ -458,32 +458,4 @@ body{
 .dark .mode-knob {
   box-shadow: 0 0 10px var(--accent);
 }
-#cursor-contrast {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 15px;
-  height: 15px;
-
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 999999;
-
-  background: white;
-  mix-blend-mode: difference;
-
-  border-radius: 50%;
-
-  transition:
-    width 150ms ease,
-    height 150ms ease,
-    background 150ms ease,
-    transform 40ms linear;
-}
-
-@media (max-width: 768px) {
-  #cursor-contrast {
-    display: none;
-  }
-}
+/* ── Custom cursor styles are in cursor.css (imported by CustomCursor.jsx) ── */

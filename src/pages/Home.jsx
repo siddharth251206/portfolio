@@ -51,7 +51,7 @@ return (<>
   </div>
 </div>
       <Footer />
-      <div id="cursor-contrast"></div>
-      
+
+
 </>);
 }
