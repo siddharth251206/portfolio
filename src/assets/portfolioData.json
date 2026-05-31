@@ -124,7 +124,7 @@
       "title": "SkyBuddy",
       "description": "SkyBuddy is an offline-first AI Airport Companion ecosystem and winning project of the PowerMind Hackathon, built to provide intelligent airport navigation, proactive passenger assistance, indoor positioning, BLE-powered smart notifications, and privacy-first on-device AI experiences using Google Gemma 4. The platform combines contextual AI guidance, live indoor navigation, SOS security systems, and real-time airport awareness into a fully offline-capable ecosystem where no personal passenger data leaves the device.",
       "image": "https://res.cloudinary.com/djqtmil10/image/upload/v1778183790/WhatsApp_Image_2026-05-04_at_8.22.17_AM_hwvxyg.jpg",
-      "github": "https://github.com/Powermind-Hackathon/ps3_LowBattery",
+      "github": "https://github.com/siddharth251206/SkyBuddy",
       "demo": "",
       "tech": [
         "Kotlin",
