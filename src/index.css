@@ -458,4 +458,130 @@ body{
 .dark .mode-knob {
   box-shadow: 0 0 10px var(--accent);
 }
+
+/* ── Current Role Badge ── */
+.current-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 8px 14px;
+  border-radius: 999px;
+  background: hsla(var(--accent) / 0.08);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid hsla(var(--accent) / 0.18);
+  box-shadow:
+    0 2px 12px -2px hsla(var(--accent) / 0.12),
+    inset 0 1px 0 hsla(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.current-role-badge:hover {
+  background: hsla(var(--accent) / 0.14);
+  border-color: hsla(var(--accent) / 0.3);
+  box-shadow:
+    0 4px 18px -3px hsla(var(--accent) / 0.2),
+    inset 0 1px 0 hsla(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.current-role-icon {
+  color: hsl(var(--accent));
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.current-role-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  letter-spacing: 0.01em;
+}
+
+.current-role-separator {
+  color: hsl(var(--muted-foreground));
+  font-weight: 400;
+}
+
+.current-role-org {
+  font-weight: 600;
+  color: hsl(var(--accent));
+}
+
+@media (max-width: 640px) {
+  .current-role-badge {
+    padding: 6px 14px 6px 12px;
+    gap: 8px;
+  }
+  .current-role-text {
+    font-size: 0.78rem;
+  }
+  .current-role-icon {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/* ── About Section Tabs ── */
+.about-tab-switcher {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 14px;
+  background: hsla(var(--foreground) / 0.05);
+  border: 1px solid hsla(var(--foreground) / 0.06);
+  width: fit-content;
+  margin: 0 auto 2rem;
+}
+
+.about-tab-btn {
+  position: relative;
+  padding: 10px 24px;
+  border-radius: 11px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: color 0.25s ease;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.about-tab-btn:hover {
+  color: hsl(var(--foreground));
+}
+
+.about-tab-btn.active {
+  color: hsl(var(--accent-foreground));
+}
+
+/* The sliding highlight behind the active tab */
+.about-tab-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 11px;
+  background: hsl(var(--accent));
+  box-shadow: 0 2px 10px hsla(var(--accent) / 0.35);
+  z-index: 0;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-tab-content {
+  min-height: 200px;
+}
+
+@media (max-width: 640px) {
+  .about-tab-btn {
+    padding: 8px 18px;
+    font-size: 0.82rem;
+  }
+  .about-tab-switcher {
+    margin-bottom: 1.5rem;
+  }
+}
+
 /* ── Custom cursor styles are in cursor.css (imported by CustomCursor.jsx) ── */

@@ -3,6 +3,7 @@ import { motion} from "framer-motion";
 import  FloatingParticle  from "../components/FloatingParticle"
 import SectionParticles from "./SectionParticles";
 import { usePortfolio } from "../context/PortfolioContext";
+import { Briefcase } from "lucide-react";
 
 export default function Hero() {
   const { portfolioData } = usePortfolio();
@@ -132,6 +133,23 @@ const drop = {
             {hero.bio}
           </motion.p>
 
+          {/* CURRENT ROLE BADGE */}
+          {hero.currentRole && (
+            <motion.div
+              className={`flex ${isMobile ? 'justify-center' : ''}`}
+              variants={drop}
+            >
+              <div className="current-role-badge">
+                <Briefcase className="current-role-icon" size={15} />
+                <span className="current-role-text">
+                  {hero.currentRole.title}
+                  <span className="current-role-separator"> at </span>
+                  <span className="current-role-org">{hero.currentRole.organization}</span>
+                </span>
+              </div>
+            </motion.div>
+          )}
+
           {/* BUTTONS */}
           <motion.div className={`
             flex gap-3 sm:gap-4 pt-4
@@ -173,11 +191,11 @@ const drop = {
         <div className="absolute inset-0 rounded-[999px] glow-border"></div>
 
         <motion.img
-          src="/sid.png"
+          src="/siddharth.png"
           alt="Siddharth"
           className={`
             relative z-10 shape-glow shape-glow-animate object-contain
-            ${isMobile ? 'h-[45vh] w-auto sm:h-[55vh]' : 'h-[75vh] w-auto lg:h-[85vh]'}
+            ${isMobile ? 'h-[45vh] w-auto sm:h-[55vh]' : 'h-[85vh] w-auto lg:h-[80vh]'}
           `}
           style={{
             transformOrigin: "bottom center",

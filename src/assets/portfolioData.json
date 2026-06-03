@@ -2,7 +2,11 @@
   "hero": {
     "greeting": "Hi, I'm Siddharth Sheth,",
     "headline": "a CSE undergrad from SVNIT, learning, building, evolving.",
-    "bio": "I enjoy taking ideas from sketches to screens. Web dev, DSA, design systems, clean UX — all the stuff that makes a product feel alive."
+    "bio": "I enjoy taking ideas from sketches to screens. Web dev, DSA, design systems, clean UX — all the stuff that makes a product feel alive.",
+    "currentRole": {
+      "title": "Developer",
+      "organization": "ACM NIT Surat"
+    }
   },
   "about": {
     "tags": [
