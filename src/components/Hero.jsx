@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import  FloatingParticle  from "../components/FloatingParticle"
 import SectionParticles from "./SectionParticles";
 import { usePortfolio } from "../context/PortfolioContext";
@@ -25,6 +25,7 @@ export default function Hero() {
   const [shiftImage, setShiftImage] = useState(false);
   const [showText, setShowText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [charCount, setCharCount] = useState(0);
 
   // Detect mobile
   useEffect(() => {
@@ -64,9 +65,9 @@ const drop = {
 
   // Animation sequence
   useEffect(() => {
-    const t1 = setTimeout(() => setShowHello(false), 2000);
-    const t2 = setTimeout(() => setShiftImage(true), 1600);
-    const t3 = setTimeout(() => setShowText(true), 1900);
+    const t1 = setTimeout(() => setShowHello(false), 1900);
+    const t2 = setTimeout(() => setShiftImage(true), 2400);
+    const t3 = setTimeout(() => setShowText(true), 2700);
 
     return () => {
       clearTimeout(t1);
@@ -74,6 +75,22 @@ const drop = {
       clearTimeout(t3);
     };
   }, []);
+
+  // Typing effect
+  const HELLO_TEXT = "<Hello, World />";
+  useEffect(() => {
+    if (!showHello) return;
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCharCount(c => {
+          if (c >= HELLO_TEXT.length) { clearInterval(interval); return c; }
+          return c + 1;
+        });
+      }, 60);
+      return () => clearInterval(interval);
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [showHello]);
 
   return (
     <section className="relative min-h-screen w-full
@@ -87,7 +104,7 @@ const drop = {
       <div className={`
         absolute z-30 max-w-[650px] w-full px-4
         ${isMobile 
-          ? 'top-[15vh] left-1/2 -translate-x-1/2 text-center' 
+          ? 'top-[12vh] left-1/2 -translate-x-1/2 text-center' 
           : 'left-[8vw] lg:left-[18vw] top-[20vh] text-left'}
       `}>
         {showText && (
@@ -148,7 +165,7 @@ const drop = {
 
           {/* BUTTONS */}
           <motion.div className={`
-            flex gap-3 sm:gap-4 pt-4
+            flex gap-3 sm:gap-4 pt-4 relative z-30
             ${isMobile ? 'justify-center flex-wrap' : ''}
           `}>
             <motion.button
@@ -216,7 +233,7 @@ const drop = {
           alt="Siddharth"
           className={`
             relative z-10 shape-glow shape-glow-animate object-contain
-            ${isMobile ? 'h-[45vh] w-auto sm:h-[55vh]' : 'h-[85vh] w-auto lg:h-[80vh]'}
+            ${isMobile ? 'h-[38vh] w-auto sm:h-[48vh]' : 'h-[85vh] w-auto lg:h-[80vh]'}
           `}
           style={{
             transformOrigin: "bottom center",
@@ -262,14 +279,119 @@ const drop = {
         </motion.div>
       )}
 
-      {/* HELLOOOOOO PASSING BEHIND */}
-      {showHello && (
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <span className="hellosweep hero-hand-title">
-            HEEEELLLLLLOOOOOOO
-          </span>
-        </div>
-      )}
+      {/* ── INTRO ANIMATION ── */}
+      <AnimatePresence>
+        {showHello && (
+          <motion.div
+            key="intro"
+            className="absolute inset-0 z-50 flex items-center justify-center bg-[var(--background)]"
+            exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Floating code snippets in background */}
+            {["const", "{ }", "=>", "()", "//", "<>", "[]", "&&", "fn", "::"].map((snippet, i) => (
+              <motion.span
+                key={i}
+                className="absolute font-mono text-[hsl(var(--accent))] select-none pointer-events-none"
+                style={{
+                  fontSize: `${10 + Math.random() * 14}px`,
+                  left: `${8 + (i * 9)}%`,
+                  top: `${15 + (i % 3) * 28}%`,
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: [0, 0.12, 0.08], y: [20, -10, -20] }}
+                transition={{ duration: 2.5, delay: 0.1 + i * 0.08, ease: "easeOut" }}
+              >
+                {snippet}
+              </motion.span>
+            ))}
+
+            {/* Main terminal card */}
+            <motion.div
+              className="relative"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Glow behind card */}
+              <motion.div
+                className="absolute -inset-8 rounded-3xl"
+                style={{ background: "radial-gradient(ellipse, hsl(var(--accent) / 0.12) 0%, transparent 70%)" }}
+                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              {/* Terminal frame */}
+              <div
+                className="relative border-[2.5px] border-[var(--foreground)] dark:border-white/25 bg-[var(--card-bg)] backdrop-blur-xl px-6 sm:px-10 py-6 sm:py-8 shadow-[6px_6px_0px_0px_var(--foreground)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.12)]"
+                style={{ borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px" }}
+              >
+                {/* Masking tape */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-white/50 dark:bg-white/10 border border-black/10 dark:border-white/10 rotate-[-2deg] shadow-sm" style={{ borderRadius: "4px 8px 3px 6px" }} />
+
+                {/* Terminal dots */}
+                <div className="flex gap-2 mb-4">
+                  <span className="w-3 h-3 rounded-full bg-red-400/70" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-400/70" />
+                  <span className="w-3 h-3 rounded-full bg-green-400/70" />
+                  <span className="ml-3 text-[11px] font-mono text-[hsl(var(--muted-foreground))] opacity-60">~/portfolio</span>
+                </div>
+
+                {/* Prompt line */}
+                <div className="flex items-center gap-2 mb-2">
+                  <motion.span
+                    className="font-mono text-sm text-[hsl(var(--accent))] opacity-70"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.7 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    $
+                  </motion.span>
+                  <motion.span
+                    className="font-mono text-sm text-[hsl(var(--muted-foreground))] opacity-50"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.5 }}
+                    transition={{ delay: 0.25 }}
+                  >
+                    echo
+                  </motion.span>
+                </div>
+
+                {/* The main typed text */}
+                <div className="min-h-[1.2em]">
+                  <span
+                    className="hero-hand-title font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight whitespace-nowrap"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent) / 0.5))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {HELLO_TEXT.slice(0, charCount)}
+                  </span>
+                  {/* Inline blinking cursor */}
+                  <span
+                    className="inline-block w-[5px] h-[36px] sm:h-[52px] md:h-[64px] lg:h-[76px] translate-y-[6px] sm:translate-y-[10px] md:translate-y-[14px] lg:translate-y-[18px] rounded-sm ml-1"
+                    style={{
+                      background: "hsl(var(--accent))",
+                      animation: "cursorBlink 0.7s steps(1) infinite",
+                    }}
+                  />
+                </div>
+
+                {/* Status line */}
+                <motion.p
+                  className="font-mono text-[11px] sm:text-xs text-[hsl(var(--muted-foreground))] mt-4 opacity-0"
+                  animate={{ opacity: 0.4 }}
+                  transition={{ delay: 1.15, duration: 0.3 }}
+                >
+                  ✓ ready to explore
+                </motion.p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </section>
     

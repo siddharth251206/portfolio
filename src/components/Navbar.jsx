@@ -95,27 +95,31 @@ export default function Navbar() {
 
           {/* MODE SWITCHER */}
           <div
+            title="Change mode"
             onClick={() => {
               const root = document.documentElement;
               root.classList.toggle("dark");
             }}
             className="
-              relative w-12 sm:w-14 h-6 sm:h-7 rounded-full cursor-pointer select-none
-              bg-white/40 dark:bg-white/10
-              border border-white/30 dark:border-white/20
-              shadow-inner backdrop-blur-xl
+              relative w-12 sm:w-14 h-6 sm:h-7 cursor-pointer select-none
+              bg-[var(--card-bg)]
+              border-[2px] border-[var(--foreground)] dark:border-white/30
+              shadow-[3px_3px_0px_0px_var(--foreground)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.15)]
               transition-all duration-300
               flex items-center
             "
+            style={{ borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px" }}
           >
             <div
               className="
-                absolute top-0.5 sm:top-1 h-4 sm:h-5 w-4 sm:w-5 rounded-full
-                bg-white dark:bg-[hsl(var(--accent))]
-                shadow-md dark:shadow-[0_0_10px_hsl(var(--accent))]
+                absolute top-1/2 -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5
+                bg-[var(--foreground)] dark:bg-[hsl(var(--accent))]
                 transition-all duration-300
               "
-              style={{ left: "var(--toggle-knob-left)" }}
+              style={{ 
+                left: "var(--toggle-knob-left)",
+                borderRadius: "15px 10px 25px 8px / 12px 18px 10px 20px" 
+              }}
             />
           </div>
         </div>
@@ -177,27 +181,31 @@ export default function Navbar() {
               <div className="pt-2 px-4 flex items-center justify-between">
                 <span className="text-sm text-[hsl(var(--muted-foreground))]">Theme</span>
                 <div
+                  title="Change mode"
                   onClick={() => {
                     const root = document.documentElement;
                     root.classList.toggle("dark");
                   }}
                   className="
-                    relative w-14 h-7 rounded-full cursor-pointer select-none
-                    bg-white/40 dark:bg-white/10
-                    border border-white/30 dark:border-white/20
-                    shadow-inner backdrop-blur-xl
+                    relative w-14 h-7 cursor-pointer select-none
+                    bg-[var(--card-bg)]
+                    border-[2px] border-[var(--foreground)] dark:border-white/30
+                    shadow-[3px_3px_0px_0px_var(--foreground)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.15)]
                     transition-all duration-300
                     flex items-center
                   "
+                  style={{ borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px" }}
                 >
                   <div
                     className="
-                      absolute top-1 h-5 w-5 rounded-full
-                      bg-white dark:bg-[hsl(var(--accent))]
-                      shadow-md dark:shadow-[0_0_10px_hsl(var(--accent))]
+                      absolute top-1/2 -translate-y-1/2 h-5 w-5
+                      bg-[var(--foreground)] dark:bg-[hsl(var(--accent))]
                       transition-all duration-300
                     "
-                    style={{ left: "var(--toggle-knob-left)" }}
+                    style={{ 
+                      left: "var(--toggle-knob-left)",
+                      borderRadius: "15px 10px 25px 8px / 12px 18px 10px 20px" 
+                    }}
                   />
                 </div>
               </div>

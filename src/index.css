@@ -166,17 +166,9 @@ body{
   overflow-x: hidden;
 }
 
-@keyframes helloSweepRL {
-  0% {
-    transform: translateX(140%) scale(1.05) skewX(6deg);
-    opacity: 1;
-    filter: blur(2px);
-  }
-  100% {
-    transform: translateX(-130%) scale(1) skewX(-6deg);
-    opacity: 1;
-    filter: blur(2px);
-  }
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 @keyframes floatParticle {
   0% {
