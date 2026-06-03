@@ -1,13 +1,92 @@
-import { motion } from "framer-motion";
-import FloatingParticle from "../components/FloatingParticle";
-import { sectionReveal, staggerChildren, itemReveal } from "../animations/reveal";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { sectionReveal, itemReveal } from "../animations/reveal";
 import * as Icons from "lucide-react";
 import SectionParticles from "./SectionParticles";
 import { usePortfolio } from "../context/PortfolioContext";
 
+const DEVICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
+
+// Every skill → icon URL or lucide fallback
+const SKILL_ICONS = {
+  "React.js":            `${DEVICON_BASE}/react/react-original.svg`,
+  "Vite":                `${DEVICON_BASE}/vitejs/vitejs-original.svg`,
+  "TailwindCSS":         `${DEVICON_BASE}/tailwindcss/tailwindcss-original.svg`,
+  "Node.js":             `${DEVICON_BASE}/nodejs/nodejs-original.svg`,
+  "Express":             `${DEVICON_BASE}/express/express-original.svg`,
+  "Django":              `${DEVICON_BASE}/django/django-plain.svg`,
+  "SQL / PostgreSQL":    `${DEVICON_BASE}/postgresql/postgresql-original.svg`,
+  "REST APIs":           { lucide: "Globe" },
+  "C":                   `${DEVICON_BASE}/c/c-original.svg`,
+  "C++":                 `${DEVICON_BASE}/cplusplus/cplusplus-original.svg`,
+  "JavaScript":          `${DEVICON_BASE}/javascript/javascript-original.svg`,
+  "Python":              `${DEVICON_BASE}/python/python-original.svg`,
+  "Data Structures":     { lucide: "Layers" },
+  "Algorithms":          { lucide: "Binary" },
+  "Dynamic Programming": { lucide: "Cpu" },
+  "Graphs & Trees":      { lucide: "Network" },
+  "Competitive Programming": { lucide: "Trophy" },
+  "Git / GitHub":        `${DEVICON_BASE}/git/git-original.svg`,
+  "Figma":               `${DEVICON_BASE}/figma/figma-original.svg`,
+  "VS Code":             `${DEVICON_BASE}/vscode/vscode-original.svg`,
+  "Render / Vercel":     `${DEVICON_BASE}/vercel/vercel-original.svg`,
+  "Supabase":            `${DEVICON_BASE}/supabase/supabase-original.svg`,
+  "NeonDB":              { lucide: "Database" },
+};
+
+// Wobbly border-radius presets
+const WOBBLY = [
+  "255px 15px 225px 15px / 15px 225px 15px 255px",
+  "15px 225px 15px 255px / 255px 15px 225px 15px",
+  "225px 15px 255px 15px / 15px 255px 15px 225px",
+  "15px 255px 15px 225px / 225px 15px 255px 15px",
+];
+
+function SkillCard({ skill, index }) {
+  const iconData = SKILL_ICONS[skill];
+  const wobbly = WOBBLY[index % WOBBLY.length];
+  // Slight varied rotation per card
+  const rotations = [-1.5, 0.8, -0.5, 1.2, -1, 0.5, 1.5, -0.8];
+  const rot = rotations[index % rotations.length];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, rotate: 0 }}
+      animate={{ opacity: 1, y: 0, rotate: rot }}
+      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+      transition={{ delay: index * 0.04, duration: 0.35, ease: "easeOut" }}
+      whileHover={{ 
+        scale: 1.08, 
+        rotate: 0, 
+        y: -6,
+        transition: { type: "spring", stiffness: 400, damping: 15 }
+      }}
+      className="skill-card-hand"
+      style={{ borderRadius: wobbly }}
+    >
+      {/* Icon */}
+      <div className="skill-card-icon">
+        {typeof iconData === "string" ? (
+          <img src={iconData} alt={skill} loading="lazy" />
+        ) : iconData?.lucide ? (
+          (() => {
+            const LucideIcon = Icons[iconData.lucide] || Icons.Circle;
+            return <LucideIcon size={38} strokeWidth={1.8} />;
+          })()
+        ) : (
+          <Icons.Circle size={38} />
+        )}
+      </div>
+      {/* Name */}
+      <span className="skill-card-name">{skill}</span>
+    </motion.div>
+  );
+}
+
 export default function Skills() {
   const { portfolioData } = usePortfolio();
   const { skills } = portfolioData;
+  const [activeCategory, setActiveCategory] = useState(0);
 
   return (
     <motion.section
@@ -16,123 +95,56 @@ export default function Skills() {
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
       id="skills"
-      className="relative py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 text-[hsl(var(--foreground))] overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 overflow-hidden"
     >
-
       <SectionParticles count={12} />
-      
-      {/* SECTION HEADING */}
+
+      {/* HEADING — hand-drawn font */}
       <motion.h2 
         variants={itemReveal}
-        className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-12 sm:mb-16 lg:mb-20"
+        className="skills-heading"
       >
         Skills
-        <span className="absolute left-1/2 -bottom-3 -translate-x-1/2 w-20 sm:w-24 h-[3px] bg-[hsl(var(--accent))] rounded-full"></span>
+        <span className="skills-heading-underline" />
       </motion.h2>
 
-      {/* SKILL GRID */}
-      <motion.div 
-        variants={staggerChildren}
-        className="
-          relative z-10
-          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10
-          max-w-7xl mx-auto
-        "
-      >
+      {/* CATEGORY TABS */}
+      <motion.div variants={itemReveal} className="skills-tab-row">
         {skills.map((cat, i) => {
           const IconComponent = Icons[cat.iconName] || Icons.Circle;
           return (
-          <motion.div
-            key={i}
-            variants={itemReveal}
-            whileHover={{ scale: 1.05, y: -6 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="
-              group p-6 sm:p-8 rounded-3xl relative overflow-hidden
-
-              /* ULTRA TRANSPARENT GLASS */
-              backdrop-blur-[28px]
-              bg-white/5 dark:bg-white/2
-
-              /* CRISP GLASS BORDER */
-              border border-white/30 dark:border-white/5
-
-              /* SUBTLE GLASS SHEEN HIGHLIGHT */
-              before:absolute before:inset-0 before:rounded-3xl
-              before:bg-gradient-to-br before:from-white/25 before:to-transparent
-              dark:before:from-white/5 dark:before:to-transparent
-              before:pointer-events-none
-
-              /* FLOATING SHADOW */
-              shadow-[0_8px_25px_rgba(0,0,0,0.10)]
-              hover:shadow-[0_12px_40px_rgba(0,0,0,0.20)]
-
-              transition-all duration-500
-            "
-          >
-            {/* GRADIENT BORDER */}
-            <div className="
-              absolute inset-0 rounded-3xl 
-              border border-transparent 
-              group-hover:border-[hsl(var(--accent))]
-              opacity-40 group-hover:opacity-80
-              transition-all duration-500
-              pointer-events-none
-            "></div>
-
-            {/* SHINE EFFECT */}
-            <div className="
-              absolute inset-0 
-              bg-gradient-to-br from-white/20 to-transparent
-              opacity-0 group-hover:opacity-20
-              transition-opacity duration-500
-              pointer-events-none
-            "></div>
-
-            {/* FLOATING ICON - Responsive size */}
-            <div className="
-              absolute -top-1 -right-0 
-              opacity-10 group-hover:opacity-20 
-              translate-y-2 group-hover:translate-y-0
-              transition-all duration-500
-              scale-75 sm:scale-100
-            ">
-              <IconComponent size={70} strokeWidth={1.5} />
-            </div>
-
-            {/* TITLE */}
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-[hsl(var(--accent))]">
-              {cat.title}
-            </h3>
-
-            {/* SKILL LIST */}
-            <motion.ul
-              variants={staggerChildren}
-              className="space-y-2 sm:space-y-3 text-base sm:text-lg leading-relaxed"
+            <button
+              key={i}
+              className={`skills-tab ${activeCategory === i ? "skills-tab--active" : ""}`}
+              onClick={() => setActiveCategory(i)}
+              style={{ 
+                borderRadius: WOBBLY[i % WOBBLY.length],
+              }}
             >
-              {cat.items.map((skill, idx) => (
-                <motion.li
-                  key={idx}
-                  variants={itemReveal}
-                  className="
-                    relative pl-3
-                    before:content-['']
-                    before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2
-                    before:w-1.5 before:h-1.5 before:rounded-full
-                    before:bg-[hsl(var(--accent))]
-                    before:opacity-60
-                    hover:before:opacity-100
-                    transition-all
-                  "
-                >
-                  {skill}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
+              <IconComponent size={16} strokeWidth={2.5} />
+              <span>{cat.title}</span>
+            </button>
           );
         })}
       </motion.div>
+
+      {/* SKILL CARDS GRID */}
+      <div className="skills-grid-wrapper">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25 }}
+            className="skills-grid"
+          >
+            {skills[activeCategory]?.items.map((skill, idx) => (
+              <SkillCard key={skill} skill={skill} index={idx} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
     </motion.section>
   );

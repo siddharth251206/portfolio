@@ -2,11 +2,49 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sectionReveal, staggerChildren, itemReveal } from "../animations/reveal";
 import { usePortfolio } from "../context/PortfolioContext";
+import { FolderGit2, Trophy, Cpu, Palette, ArrowUpRight, FileText } from "lucide-react";
 
 const TABS = [
   { id: "story", label: "My Story" },
   { id: "achievements", label: "Achievements" },
 ];
+
+const STAT_CARDS = [
+  { icon: FolderGit2, value: "10+", label: "Projects Built", color: "hsl(var(--accent))" },
+  { icon: Trophy, value: "5+", label: "Hackathons", color: "#f59e0b" },
+  { icon: Cpu, value: "Full-Stack", label: "Developer", color: "#6366f1" },
+  { icon: Palette, value: "UI/UX", label: "Enthusiast", color: "#ec4899" },
+];
+
+// Badge config: color + emoji for each label type
+const BADGE_CONFIG = {
+  "Winner":             { bg: "#059669", emoji: "🏆", shadow: "#047857" },
+  "Finalist":           { bg: "#2563eb", emoji: "🎯", shadow: "#1d4ed8" },
+  "Runner-Up / Finalist": { bg: "#d97706", emoji: "🥈", shadow: "#b45309" },
+  "Selected":           { bg: "#0d9488", emoji: "✅", shadow: "#0f766e" },
+  "Top 30":             { bg: "#7c3aed", emoji: "⚡", shadow: "#6d28d9" },
+};
+
+// Wobbly border-radius presets for the hand-drawn cards
+const WOBBLY_CARD = [
+  "255px 15px 225px 15px / 15px 225px 15px 255px",
+  "15px 225px 15px 255px / 255px 15px 225px 15px",
+  "225px 15px 255px 15px / 15px 255px 15px 225px",
+  "15px 255px 15px 225px / 225px 15px 255px 15px",
+  "200px 20px 200px 20px / 20px 200px 20px 200px",
+  "20px 240px 20px 240px / 240px 20px 240px 20px",
+  "230px 18px 210px 18px / 18px 230px 18px 210px",
+];
+
+// Slight rotations for each card
+const ROTATIONS = [-2, 1.5, -1, 2, -1.5, 0.8, -2.2];
+
+// Tape/tack decoration types
+const DECORATIONS = ["tape", "tack", "tape", "tack", "tape", "tack", "tape"];
+
+function getBadge(label) {
+  return BADGE_CONFIG[label] || { bg: "#0ea5e9", emoji: "🔹", shadow: "#0284c7" };
+}
 
 export default function About() {
   const { portfolioData } = usePortfolio();
@@ -16,19 +54,29 @@ export default function About() {
   const switcherRef = useRef(null);
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
-  // Update indicator position when tab changes
   useEffect(() => {
     const el = tabRefs.current[activeTab];
     const parent = switcherRef.current;
     if (el && parent) {
       const parentRect = parent.getBoundingClientRect();
       const elRect = el.getBoundingClientRect();
-      setIndicator({
-        left: elRect.left - parentRect.left,
-        width: elRect.width,
-      });
+      setIndicator({ left: elRect.left - parentRect.left, width: elRect.width });
     }
   }, [activeTab]);
+
+  const getMonthName = (monthNum) => {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const m = parseInt(monthNum);
+    return (m >= 1 && m <= 12) ? months[m - 1] : "";
+  };
+
+  const sortedAchievements = [...about.achievements]
+    .filter(a => typeof a === "object")
+    .sort((a, b) => {
+      const yearDiff = (parseInt(b.date) || 0) - (parseInt(a.date) || 0);
+      if (yearDiff !== 0) return yearDiff;
+      return (parseInt(b.month) || 0) - (parseInt(a.month) || 0);
+    });
 
   return (
     <motion.section
@@ -39,44 +87,28 @@ export default function About() {
       id="about"
       className="relative w-full py-16 sm:py-24 lg:py-32 text-[hsl(var(--foreground))]"
     >
-
-      {/* BACKGROUND IMAGE */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-80"
-        style={{ backgroundImage: "var(--about-bg)" }}
-      ></div>
-
-      {/* FLOATING DECOR SHAPES */}
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-80"
+        style={{ backgroundImage: "var(--about-bg)" }} />
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute w-16 sm:w-24 h-16 sm:h-24 bg-[hsl(var(--accent))/0.3] blur-3xl rounded-full top-10 sm:top-20 left-5 sm:left-10 animate-pulse"></div>
-        <div className="absolute w-20 sm:w-32 h-20 sm:h-32 bg-blue-500/20 blur-3xl rounded-full bottom-10 sm:bottom-20 right-10 sm:right-20 animate-pulse"></div>
+        <div className="absolute w-16 sm:w-24 h-16 sm:h-24 bg-[hsl(var(--accent))/0.3] blur-3xl rounded-full top-10 sm:top-20 left-5 sm:left-10 animate-pulse" />
+        <div className="absolute w-20 sm:w-32 h-20 sm:h-32 bg-blue-500/20 blur-3xl rounded-full bottom-10 sm:bottom-20 right-10 sm:right-20 animate-pulse" />
       </div>
 
-      {/* MAIN CONTENT */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
-
         {/* HEADING */}
-        <motion.h2 
-          variants={itemReveal}
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-12 sm:mb-16 text-center"
-        >
+        <motion.h2 variants={itemReveal}
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-12 sm:mb-16 text-center hero-hand-title">
           About <span className="text-[hsl(var(--accent))]">Me</span>
         </motion.h2>
 
         {/* GLASS CARD */}
-        <motion.div 
-          variants={staggerChildren}
-          className="
-            relative p-6 sm:p-10 lg:p-14
-            rounded-3xl
-            backdrop-blur-2xl
-            bg-white/10 dark:bg-white/5
-            border border-white/20 dark:border-white/10
-            shadow-2xl shadow-black/40
-          "
-        >
+        <motion.div variants={staggerChildren}
+          className="relative p-6 sm:p-10 lg:p-14 rounded-3xl backdrop-blur-2xl
+            bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10
+            shadow-2xl shadow-black/40">
 
-          {/* FLOATING TAGS - Dynamic */}
+          {/* FLOATING TAGS */}
           {about.tags.map((tag, i) => {
             const positions = [
               "hidden sm:block absolute -top-4 sm:-top-6 left-4 sm:left-6",
@@ -86,22 +118,11 @@ export default function About() {
               "hidden lg:block absolute top-1/3 -left-26",
               "hidden lg:block absolute bottom-1/4 -right-26"
             ];
-            const animations = [
-              "animate-bounce",
-              "animate-floating",
-              "animate-floating-delayed",
-              "animate-floating",
-              "animate-floating-delayed",
-              "animate-floating-slower"
-            ];
-            
-            // fallback if more tags than positions defined
-            const pos = positions[i % positions.length];
-            const anim = animations[i % animations.length];
-
+            const animations = ["animate-bounce","animate-floating","animate-floating-delayed",
+              "animate-floating","animate-floating-delayed","animate-floating-slower"];
             return (
-              <motion.div key={i} variants={itemReveal} className={pos}>
-                <div className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 border border-white/30 backdrop-blur-xl text-xs sm:text-sm font-semibold ${anim}`}>
+              <motion.div key={i} variants={itemReveal} className={positions[i % positions.length]}>
+                <div className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/20 border border-white/30 backdrop-blur-xl text-xs sm:text-sm font-semibold ${animations[i % animations.length]}`}>
                   {tag}
                 </div>
               </motion.div>
@@ -111,18 +132,13 @@ export default function About() {
           {/* TAB SWITCHER */}
           <motion.div variants={itemReveal}>
             <div className="about-tab-switcher" ref={switcherRef}>
-              {/* Sliding indicator */}
-              <div
-                className="about-tab-indicator"
-                style={{ left: indicator.left, width: indicator.width }}
-              />
+              <div className="about-tab-indicator"
+                style={{ left: indicator.left, width: indicator.width }} />
               {TABS.map((tab) => (
-                <button
-                  key={tab.id}
+                <button key={tab.id}
                   ref={(el) => (tabRefs.current[tab.id] = el)}
-                  className={`about-tab-btn ${activeTab === tab.id ? "active" : ""}`}
-                  onClick={() => setActiveTab(tab.id)}
-                >
+                  className={`about-tab-btn hero-hand-desc font-bold text-xl ${activeTab === tab.id ? "active" : ""}`}
+                  onClick={() => setActiveTab(tab.id)}>
                   {tab.label}
                 </button>
               ))}
@@ -132,142 +148,139 @@ export default function About() {
           {/* TAB CONTENT */}
           <div className="about-tab-content">
             <AnimatePresence mode="wait">
+
+              {/* ─── MY STORY ─── */}
               {activeTab === "story" && (
-                <motion.div
-                  key="story"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  {/* BIO TEXT */}
-                  <motion.div 
-                    variants={staggerChildren} 
-                    initial="hidden"
-                    animate="show"
-                    className="leading-relaxed text-base sm:text-lg lg:text-xl space-y-4 sm:space-y-6"
-                  >
+                <motion.div key="story"
+                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3 }}>
+                  
+                  {/* STAT CARDS */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+                    {STAT_CARDS.map((stat, i) => (
+                      <motion.div key={i}
+                        initial={{ opacity: 0, y: 16, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ delay: i * 0.08, duration: 0.4 }}
+                        className="about-stat-card group">
+                        <div className="about-stat-icon" style={{ color: stat.color }}>
+                          <stat.icon size={20} strokeWidth={2} />
+                        </div>
+                        <div className="about-stat-value hero-hand-title text-2xl">{stat.value}</div>
+                        <div className="about-stat-label hero-hand-desc font-bold text-[1.05rem]">{stat.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* BIO */}
+                  <div className="space-y-5 sm:space-y-6">
                     {about.paragraphs.map((para, i) => (
-                      <motion.p key={i} variants={itemReveal}>
+                      <motion.p key={i}
+                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
+                        className={i === 0
+                          ? 'hero-hand-desc text-lg sm:text-xl lg:text-2xl font-bold text-[hsl(var(--foreground))] border-l-4 border-[hsl(var(--accent))] pl-4 sm:pl-5 leading-relaxed'
+                          : 'hero-hand-desc text-base sm:text-lg text-[hsl(var(--muted-foreground))] leading-relaxed'
+                        }>
                         {para}
                       </motion.p>
                     ))}
-                  </motion.div>
+                  </div>
 
                   {/* BUTTONS */}
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8 sm:pt-10">
-                    <button 
-                      className="btn w-full sm:w-auto"
-                      onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                    >
-                      View Projects
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.4 }}
+                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8 sm:pt-10">
+                    <button className="hero-hand-btn"
+                      onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
+                      <span>View Projects</span><ArrowUpRight size={16} />
                     </button>
-                    <a
-                      href="/Siddharth_Sheth_resume.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn w-full sm:w-auto text-center"
-                    >
-                      Resume
+                    <a href="/Siddharth_Sheth_resume.pdf" target="_blank" rel="noopener noreferrer"
+                      className="hero-hand-btn hero-hand-btn--ghost">
+                      <FileText size={16} /><span>Resume</span>
                     </a>
-                  </div>
+                  </motion.div>
                 </motion.div>
               )}
 
+              {/* ─── ACHIEVEMENTS ─── */}
               {activeTab === "achievements" && (
-                <motion.div
-                  key="achievements"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  {/* ACHIEVEMENTS TIMELINE */}
-                  <div className="relative">
-                    {/* Vertical timeline line */}
-                    <div className="absolute left-[22px] top-2 bottom-2 w-[2px] bg-[hsl(var(--accent))/0.2] rounded-full hidden sm:block" />
+                <motion.div key="achievements"
+                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3 }}>
+                  
+                  {/* Hand-drawn sticky-note achievement cards */}
+                  <div className="ach-cards-grid">
+                    {sortedAchievements.map((ach, i) => {
+                      const badge = getBadge(ach.label);
+                      const monthName = getMonthName(ach.month);
+                      const wobbly = WOBBLY_CARD[i % WOBBLY_CARD.length];
+                      const rotation = ROTATIONS[i % ROTATIONS.length];
+                      const decoration = DECORATIONS[i % DECORATIONS.length];
 
-                    <div className="space-y-8">
-                      {[...about.achievements]
-                        .sort((a, b) => {
-                          if (typeof a !== 'object' || typeof b !== 'object') return 0;
-                          const yearA = parseInt(a.date) || 0;
-                          const yearB = parseInt(b.date) || 0;
-                          if (yearA !== yearB) return yearB - yearA;
-                          const monthA = parseInt(a.month) || 0;
-                          const monthB = parseInt(b.month) || 0;
-                          return monthB - monthA;
-                        })
-                        .map((ach, i) => {
-                          const isObj = typeof ach === 'object';
-                          
-                          const getMonthName = (monthNum) => {
-                            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                            const m = parseInt(monthNum);
-                            if (m >= 1 && m <= 12) return months[m - 1];
-                            return "";
-                          };
-                          
-                          const monthName = isObj ? getMonthName(ach.month) : "";
-                          const displayDate = isObj ? `${monthName ? monthName + ' ' : ''}${ach.date}` : '—';
-                          // Short date for the circular badge
-                          const badgeDate = isObj ? ach.date : '—';
-                          
-                          return (
-                            <motion.div
-                              key={i}
-                              initial={{ opacity: 0, y: 16 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: i * 0.08, duration: 0.4 }}
-                              className="flex gap-4 sm:gap-6 items-start"
-                            >
-                              {/* Timeline dot */}
-                              <div className="relative flex-shrink-0 hidden sm:flex flex-col items-center mt-1">
-                                <div className="w-[46px] h-[46px] rounded-full bg-[hsl(var(--accent))/0.15] border-2 border-[hsl(var(--accent))/0.4] flex items-center justify-center z-10 flex-col">
-                                  {monthName && <span className="text-[8px] font-bold text-[hsl(var(--accent))] uppercase tracking-widest leading-none mb-0.5">{monthName}</span>}
-                                  <span className="text-[10px] font-black text-[hsl(var(--accent))] tracking-wider leading-none">
-                                    {badgeDate}
-                                  </span>
-                                </div>
-                              </div>
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 24, rotate: 0 }}
+                          animate={{ opacity: 1, y: 0, rotate: rotation }}
+                          transition={{ delay: i * 0.07, duration: 0.4, ease: "easeOut" }}
+                          whileHover={{ 
+                            scale: 1.05, 
+                            rotate: 0, 
+                            y: -8,
+                            transition: { type: "spring", stiffness: 350, damping: 15 }
+                          }}
+                          className="ach-card"
+                          style={{ 
+                            borderRadius: wobbly,
+                            "--ach-shadow": badge.shadow,
+                          }}
+                        >
+                          {/* Tape or tack decoration */}
+                          {decoration === "tape" && (
+                            <div className="ach-tape" />
+                          )}
+                          {decoration === "tack" && (
+                            <div className="ach-tack" style={{ background: badge.bg }} />
+                          )}
 
-                              {/* Content */}
-                              <div className="flex-1 pb-2">
-                                {isObj ? (
-                                  <>
-                                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                                      <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))]">
-                                        {ach.label}
-                                      </span>
-                                      <span className="text-xs text-[hsl(var(--muted-foreground))] font-medium sm:hidden">{displayDate}</span>
-                                    </div>
-                                    <p className="font-bold text-base sm:text-lg text-[hsl(var(--foreground))] leading-snug mb-1">
-                                      {ach.title}
-                                    </p>
-                                    {ach.description && (
-                                      <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
-                                        {ach.description}
-                                      </p>
-                                    )}
-                                  </>
-                                ) : (
-                                  <p className="text-base sm:text-lg leading-relaxed text-[hsl(var(--foreground))]">• {ach}</p>
-                                )}
-                              </div>
-                            </motion.div>
-                          );
-                      })}
-                    </div>
+                          {/* Emoji badge */}
+                          <div className="ach-emoji">{badge.emoji}</div>
+
+                          {/* Label pill */}
+                          <div className="ach-label-pill"
+                            style={{ 
+                              background: badge.bg, 
+                              color: "#fff",
+                              boxShadow: `3px 3px 0px 0px ${badge.shadow}`,
+                              borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+                            }}>
+                            {ach.label}
+                          </div>
+
+                          {/* Title */}
+                          <h4 className="ach-title">{ach.title}</h4>
+
+                          {/* Date */}
+                          <div className="ach-date">
+                            {monthName && `${monthName} `}{ach.date}
+                          </div>
+
+                          {/* Description */}
+                          {ach.description && (
+                            <p className="ach-desc">{ach.description}</p>
+                          )}
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </motion.div>
               )}
+
             </AnimatePresence>
           </div>
-
         </motion.div>
-
       </div>
-
     </motion.section>
   );
 }

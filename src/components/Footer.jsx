@@ -3,10 +3,11 @@ import { Mail, Github, Linkedin, Instagram } from "lucide-react";
 import { sectionReveal, itemReveal, staggerChildren } from "../animations/reveal";
 import SectionParticles from "../components/SectionParticles";
 import emailjs from "@emailjs/browser";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function Contact() {
   const formRef = useRef();
+  const [status, setStatus] = useState(null);
 
 const sendEmail = (e) => {
   e.preventDefault();
@@ -19,12 +20,14 @@ const sendEmail = (e) => {
       "53K4RKN6pslJLDVIG"      
     )
     .then(() => {
-      alert("Message sent successfully! 🚀");
+      setStatus({ type: "success", text: "Message sent successfully! 🚀" });
       formRef.current.reset();
+      setTimeout(() => setStatus(null), 5000);
     })
     .catch((err) => {
       console.error(err);
-      alert("Something went wrong. Try again.");
+      setStatus({ type: "error", text: "Something went wrong. Try again." });
+      setTimeout(() => setStatus(null), 5000);
     });
 };
 
@@ -53,7 +56,7 @@ const sendEmail = (e) => {
         <motion.div variants={staggerChildren} className="space-y-4 sm:space-y-6">
           <motion.h2 
             variants={itemReveal}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight hero-hand-title"
           >
             Let's Build<br />
             Something <span className="text-[hsl(var(--accent))]">Great</span>
@@ -61,7 +64,7 @@ const sendEmail = (e) => {
 
           <motion.p
             variants={itemReveal}
-            className="text-base sm:text-lg text-[hsl(var(--muted-foreground))] max-w-md leading-relaxed"
+            className="text-base sm:text-lg text-[hsl(var(--muted-foreground))] max-w-md leading-relaxed hero-hand-desc"
           >
             Whether you want to collaborate, discuss an idea, or just say hi —
             my inbox is always open. I'll get back to you as soon as I can.
@@ -78,8 +81,7 @@ const sendEmail = (e) => {
                 key={i}
                 href={social.link}
                 target="_blank"
-                className="p-2.5 sm:p-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 
-                hover:bg-[hsl(var(--accent))] hover:text-black transition-all"
+                className="hero-social-btn"
               >
                 {social.icon}
               </a>
@@ -93,14 +95,18 @@ const sendEmail = (e) => {
   onSubmit={sendEmail}
   variants={staggerChildren}
   className="
-    relative p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl
+    relative p-6 sm:p-8 lg:p-10
     backdrop-blur-2xl
-    bg-white/10 dark:bg-white/5
-    border border-white/20 dark:border-white/10
-    shadow-xl shadow-black/30
+    bg-[var(--card-bg)]
+    border-[2.5px] border-[var(--foreground)]
+    shadow-[6px_6px_0px_0px_var(--foreground)]
+    dark:border-white/30 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)]
     space-y-6 sm:space-y-8
   "
+  style={{ borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px" }}
 >
+          {/* Tape decoration */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-16 h-5 bg-white/40 dark:bg-white/10 border border-black/20 dark:border-white/20 shadow-sm backdrop-blur-md -rotate-2 rounded-sm" />
 
           {/* NAME FIELD */}
           <motion.div variants={itemReveal} className="relative">
@@ -109,7 +115,7 @@ const sendEmail = (e) => {
               name="name"
               required
               className="w-full bg-transparent border-b border-[rgb(var(--input-border))]
-              focus:border-[hsl(var(--accent))] outline-none py-2 sm:py-3 peer text-sm sm:text-base"
+              focus:border-[hsl(var(--accent))] outline-none py-2 sm:py-3 peer text-sm sm:text-base hero-hand-desc"
             />
             <label
               className="
@@ -129,7 +135,7 @@ const sendEmail = (e) => {
               name="email"
               required
               className="w-full bg-transparent border-b border-[rgb(var(--input-border))] 
-              focus:border-[hsl(var(--accent))] outline-none py-2 sm:py-3 peer text-sm sm:text-base"
+              focus:border-[hsl(var(--accent))] outline-none py-2 sm:py-3 peer text-sm sm:text-base hero-hand-desc"
             />
             <label
               className="
@@ -149,7 +155,7 @@ const sendEmail = (e) => {
               rows="4"
               name="message"
               className="w-full bg-transparent border-b border-[rgb(var(--input-border))] 
-              focus:border-[hsl(var(--accent))] outline-none py-2 sm:py-3 peer resize-none text-sm sm:text-base"
+              focus:border-[hsl(var(--accent))] outline-none py-2 sm:py-3 peer resize-none text-sm sm:text-base hero-hand-desc"
             />
             <label
               className="
@@ -163,12 +169,26 @@ const sendEmail = (e) => {
 
           </motion.div>
 
+          {/* STATUS MESSAGE */}
+          {status && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className={`p-3 rounded-lg hero-hand-desc text-center font-bold ${
+                status.type === "success" ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300" : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
+              }`}
+              style={{ borderRadius: "15px 225px 15px 255px / 255px 15px 225px 15px" }}
+            >
+              {status.text}
+            </motion.div>
+          )}
+
           {/* SUBMIT BUTTON */}
           <motion.button
             variants={itemReveal}
             type="submit"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl btn text-[hsl(var(--foreground))] font-semibold
-            hover:opacity-90 transition-all"
+            className="hero-hand-btn w-full sm:w-auto mt-4"
           >
             Send Message
           </motion.button>

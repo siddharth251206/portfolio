@@ -52,25 +52,26 @@ export default function Navbar() {
           rounded-2xl sm:rounded-3xl
           backdrop-blur-xl
 
-          border border-[var(--card-border)]
+          border-[2px] border-[var(--foreground)]
           bg-[var(--card-bg)]
-          shadow-[0_8px_30px_var(--shadow)]
+          shadow-[4px_4px_0px_0px_var(--foreground)]
+          dark:border-white/30 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.15)]
 
           transition-all duration-500
           z-50 
-          ${scrolled ? "py-2 shadow-[0_12px_45px_var(--shadow-strong)] scale-[0.985]" : ""}
+          ${scrolled ? "py-2 shadow-[2px_2px_0px_0px_var(--foreground)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.15)] scale-[0.985]" : ""}
         `}
       >
         {/* Logo */}
         <a 
           href="#hero" 
-          className="font-logotext font-bold text-base sm:text-lg text-[hsl(var(--foreground))] tracking-wide"
+          className="font-logotext font-bold text-xl sm:text-2xl text-black dark:text-white tracking-wide"
         >
           Siddharth Sheth
         </a>
 
         {/* DESKTOP NAV LINKS */}
-        <div className="hidden md:flex gap-6 lg:gap-8 items-center font-medium text-[hsl(var(--foreground))]">
+        <div className="hidden md:flex gap-6 lg:gap-8 items-center font-medium text-black dark:text-white">
 
           {navItems.map((item) => (
             <a
@@ -78,7 +79,7 @@ export default function Navbar() {
               href={`#${item.id}`}
               data-cursor="pointer"
               className={`
-                relative transition text-sm lg:text-base
+                hero-hand-desc relative transition text-base lg:text-lg
                 hover:text-[hsl(var(--accent))]
                 ${active === item.id ? "text-[hsl(var(--accent))]" : ""}
               `}
@@ -126,9 +127,9 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? (
-            <X size={24} className="text-[hsl(var(--foreground))]" />
+            <X size={24} className="text-black dark:text-white" />
           ) : (
-            <Menu size={24} className="text-[hsl(var(--foreground))]" />
+            <Menu size={24} className="text-black dark:text-white" />
           )}
         </button>
       </nav>
@@ -147,9 +148,9 @@ export default function Navbar() {
               md:hidden
               backdrop-blur-xl
               bg-[var(--card-bg)]
-              border border-[var(--card-border)]
+              border-[2px] border-[var(--foreground)] dark:border-white/30
               rounded-2xl
-              shadow-[0_12px_45px_var(--shadow-strong)]
+              shadow-[6px_6px_0px_0px_var(--foreground)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.15)]
               z-40
               overflow-hidden
             "
@@ -160,11 +161,11 @@ export default function Navbar() {
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   className={`
-                    text-left px-4 py-3 rounded-lg
-                    font-medium transition-all
+                    hero-hand-desc text-left px-4 py-3 rounded-lg
+                    font-medium transition-all text-lg
                     ${active === item.id 
                       ? "text-[hsl(var(--accent))] bg-[hsl(var(--accent))]/10" 
-                      : "text-[hsl(var(--foreground))] hover:bg-white/5"
+                      : "text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5"
                     }
                   `}
                 >
