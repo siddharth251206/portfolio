@@ -3,7 +3,6 @@ import { motion} from "framer-motion";
 import  FloatingParticle  from "../components/FloatingParticle"
 import SectionParticles from "./SectionParticles";
 import { usePortfolio } from "../context/PortfolioContext";
-import { Briefcase } from "lucide-react";
 
 export default function Hero() {
   const { portfolioData } = usePortfolio();
@@ -133,22 +132,6 @@ const drop = {
             {hero.bio}
           </motion.p>
 
-          {/* CURRENT ROLE BADGE */}
-          {hero.currentRole && (
-            <motion.div
-              className={`flex ${isMobile ? 'justify-center' : ''}`}
-              variants={drop}
-            >
-              <div className="current-role-badge">
-                <Briefcase className="current-role-icon" size={15} />
-                <span className="current-role-text">
-                  {hero.currentRole.title}
-                  <span className="current-role-separator"> at </span>
-                  <span className="current-role-org">{hero.currentRole.organization}</span>
-                </span>
-              </div>
-            </motion.div>
-          )}
 
           {/* BUTTONS */}
           <motion.div className={`
